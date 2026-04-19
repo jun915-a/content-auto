@@ -5,8 +5,8 @@ load_dotenv()
 
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
 HF_API_TOKEN = os.environ.get("HF_API_TOKEN", "")
-MEDIUM_API_TOKEN = os.environ.get("MEDIUM_API_TOKEN", "")
-MEDIUM_USER_ID = os.environ.get("MEDIUM_USER_ID", "")
+BLOGGER_API_KEY = os.environ.get("BLOGGER_API_KEY", "")
+BLOGGER_BLOG_ID = os.environ.get("BLOGGER_BLOG_ID", "")
 DISCORD_WEBHOOK_URL = os.environ.get("DISCORD_WEBHOOK_URL", "")
 
 # 生成記事数（1日あたり）

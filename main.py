@@ -2,7 +2,7 @@ from datetime import datetime
 from config import ARTICLES_PER_DAY, REDDIT_SUBREDDITS
 from sources import RedditSource, HackerNewsSource
 from generators import ArticleGenerator, ImageGenerator
-from publishers import MediumPublisher
+from publishers import BloggerPublisher
 from notifier import send_discord
 from tracker import save_entry, is_duplicate_source
 
@@ -42,7 +42,7 @@ def run():
 
     generator = ArticleGenerator()
     image_gen = ImageGenerator()
-    publisher = MediumPublisher()
+    publisher = BloggerPublisher()
 
     published = 0
     for trend in trends:

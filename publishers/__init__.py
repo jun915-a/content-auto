@@ -1,4 +1,4 @@
 from .base import Publisher, PublishResult
-from .medium import MediumPublisher
+from .blogger import BloggerPublisher
 
-__all__ = ["Publisher", "PublishResult", "MediumPublisher"]
+__all__ = ["Publisher", "PublishResult", "BloggerPublisher"]
