@@ -57,9 +57,13 @@ def _parse_article(text: str, trend) -> Optional[Article]:
         text = text[start:end + 1]
 
     try:
-        # 制御文字をエスケープ（改行やタブを正しくJSON形式に）
-        text = text.encode('utf-8', errors='ignore').decode('utf-8')
-        data = json.loads(text, strict=False)
+        import re
+        # JSONの値内の改行をエスケープ（"..." の中の改行を \n に）
+        def escape_json_value(match):
+            return match.group(0).replace('\n', '\\n').replace('\r', '\\r').replace('\t', '\\t')
+        text = re.sub(r'"[^"]*"', escape_json_value, text)
+
+        data = json.loads(text)
         return Article(
             title=data.get("title", trend.title),
             summary=data.get("summary", ""),
