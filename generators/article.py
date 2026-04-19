@@ -49,7 +49,7 @@ class ArticleGenerator:
 """
 
         try:
-            url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent"
+            url = f"https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent"
             headers = {"Content-Type": "application/json"}
             payload = {
                 "contents": [{"parts": [{"text": prompt}]}],
