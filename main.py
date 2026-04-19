@@ -37,11 +37,8 @@ def collect_trends() -> list:
 
 
 def run():
-    from config import BLOGGER_API_KEY, BLOGGER_BLOG_ID
     print(f"\n{'='*50}")
     print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M')}] 記事生成開始")
-    print(f"[DEBUG] BLOGGER_API_KEY: {BLOGGER_API_KEY[:20] if BLOGGER_API_KEY else 'NOT_SET'}")
-    print(f"[DEBUG] BLOGGER_BLOG_ID: {BLOGGER_BLOG_ID if BLOGGER_BLOG_ID else 'NOT_SET'}")
     print(f"{'='*50}\n")
 
     trends = collect_trends()
