@@ -1,4 +1,5 @@
-from google import genai
+import requests
+import json
 from dataclasses import dataclass
 from typing import Optional
 from config import GEMINI_API_KEY, ARTICLE_TEMPLATE
@@ -23,8 +24,7 @@ class ArticleGenerator:
     def __init__(self):
         if not GEMINI_API_KEY:
             raise ValueError("GEMINI_API_KEY が未設定です")
-        self.client = genai.Client(api_key=GEMINI_API_KEY)
-        self.model_name = "gemini-1.5-flash"
+        self.api_key = GEMINI_API_KEY
 
     def generate(self, trend) -> Optional[Article]:
         prompt = f"""
@@ -47,26 +47,51 @@ class ArticleGenerator:
 - 読みやすい日本語
 - 簡潔だが詳しい情報
 """
-        try:
-            response = self.client.models.generate_content(
-                model=self.model_name,
-                contents=prompt,
-            )
-            text = response.text.strip()
 
+        try:
+            url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent"
+            headers = {"Content-Type": "application/json"}
+            payload = {
+                "contents": [{"parts": [{"text": prompt}]}],
+                "generationConfig": {
+                    "temperature": 0.7,
+                    "topK": 40,
+                    "topP": 0.95,
+                },
+            }
+
+            res = requests.post(
+                url,
+                headers=headers,
+                params={"key": self.api_key},
+                json=payload,
+                timeout=30,
+            )
+
+            if res.status_code != 200:
+                print(f"[ERROR] Gemini API {res.status_code}: {res.text[:200]}")
+                return None
+
+            data = res.json()
+            candidates = data.get("candidates", [])
+            if not candidates:
+                return None
+
+            text = candidates[0].get("content", {}).get("parts", [{}])[0].get("text", "")
+
+            # JSONを抽出
             if "```json" in text:
                 text = text.split("```json")[1].split("```")[0].strip()
             elif "```" in text:
                 text = text.split("```")[1].split("```")[0].strip()
 
-            import json
-            data = json.loads(text)
+            article_data = json.loads(text)
 
             return Article(
-                title=data.get("title", trend.title),
-                summary=data.get("summary", ""),
-                details=data.get("details", ""),
-                tags=data.get("tags", []),
+                title=article_data.get("title", trend.title),
+                summary=article_data.get("summary", ""),
+                details=article_data.get("details", ""),
+                tags=article_data.get("tags", []),
                 source_url=trend.url,
             )
         except Exception as e:
