@@ -155,16 +155,21 @@ def _parse_article(text: str, trend) -> Optional[Article]:
     if not data:
         return None
 
-    title = data.get("title", "").strip()
-    details = data.get("details", "").strip()
+    title = (data.get("title") or "").strip()
+    details = (data.get("details") or "").strip()
+    summary = (data.get("summary") or "").strip()
+    tags = data.get("tags")
+    if not isinstance(tags, list):
+        tags = []
+
     if not title or not details:
         return None
 
     return Article(
         title=title,
-        summary=data.get("summary", "").strip(),
+        summary=summary,
         details=details,
-        tags=data.get("tags", []) if isinstance(data.get("tags"), list) else [],
+        tags=tags,
         source_url=trend.url,
     )
 

@@ -11,7 +11,7 @@ HF_API_TOKEN = os.environ.get("HF_API_TOKEN", "")
 COHERE_API_KEY = os.environ.get("COHERE_API_KEY", "")
 SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY", "")
 BLOGGER_BLOG_EMAIL = os.environ.get("BLOGGER_BLOG_EMAIL", "")
-SENDGRID_FROM_EMAIL = os.environ.get("SENDGRID_FROM_EMAIL", "noreply@automation.local")
+SENDGRID_FROM_EMAIL = os.environ.get("SENDGRID_FROM_EMAIL", "junconp419@gmail.com")
 DISCORD_WEBHOOK_URL = os.environ.get("DISCORD_WEBHOOK_URL", "")
 
 # 生成記事数（1回の実行あたり）
