@@ -21,27 +21,17 @@ class Article:
 
 
 def _build_prompt(trend) -> str:
-    return f"""
-以下のトピックについて、日本語のブログ記事を書いてください。
+    return f"""トピック: {trend.title}
+URL: {trend.url}
+説明: {trend.description[:150]}
 
-トピック: {trend.title}
-参照URL: {trend.url}
-補足: {trend.description[:300]}
-
-フォーマット（JSONのみで返してください。前後に説明文は不要）:
+以下のJSON形式で日本語記事を作成してください。JSONのみを返してください。
 {{
-  "title": "魅力的な日本語タイトル（60文字以内）",
-  "summary": "1-2段落の要約（200-300文字）。読者がこの記事を読みたくなるフック",
-  "details": "詳細セクション（500-800文字）。マークダウン形式。H2やリストを使って読みやすく",
-  "tags": ["タグ1", "タグ2", "タグ3"]
-}}
-
-重要:
-- SEO最適化（検索されそうなキーワードを自然に含める）
-- 読みやすい日本語
-- 簡潔だが詳しい情報
-- JSON以外は出力しない
-"""
+  "title": "日本語タイトル（60文字以内）",
+  "summary": "要約（200-300文字、フック含む）",
+  "details": "詳細（500-800文字、マークダウン、H2使用）",
+  "tags": ["タグ1", "タグ2"]
+}}"""
 
 
 def _parse_article(text: str, trend) -> Optional[Article]:
