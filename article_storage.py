@@ -1,4 +1,5 @@
 import os
+import re
 import shutil
 import subprocess
 from datetime import datetime
@@ -23,13 +24,46 @@ def get_article_dir() -> str:
     return date_dir, timestamp
 
 
+def _sanitize_for_note(content: str) -> str:
+    """Note 向け Markdown サニタイズ（Note は ##まで / テーブル・コードブロック非対応）"""
+    # H3以降を H2 に統合
+    content = re.sub(r"^#{3,}\s+", "## ", content, flags=re.MULTILINE)
+
+    # コードブロックをプレーンテキスト化（``` を削除）
+    content = re.sub(r"```[\w]*\n", "", content)
+    content = content.replace("```", "")
+
+    # テーブル行（| ... |）を箇条書きに変換
+    lines = content.split("\n")
+    new_lines = []
+    for line in lines:
+        stripped = line.strip()
+        if re.match(r"^\|.*\|$", stripped):
+            # セパレータ行（|---|---|）はスキップ
+            if re.match(r"^\|[\s\-:|]+\|$", stripped):
+                continue
+            cells = [c.strip() for c in stripped.strip("|").split("|")]
+            cells = [c for c in cells if c]
+            if cells:
+                new_lines.append("- " + " / ".join(cells))
+        else:
+            new_lines.append(line)
+    content = "\n".join(new_lines)
+
+    # 連続する空行を1つに
+    content = re.sub(r"\n{3,}", "\n\n", content)
+
+    return content
+
+
 def _format_note_style(title: str, content: str, language: str = "ja") -> str:
-    """Note 風のフォーマット（見出し、目次風）"""
+    """Note 用フォーマット（Note互換Markdownにサニタイズ）"""
+    sanitized = _sanitize_for_note(content)
     if language == "ja":
-        header = f"# {title}\n\n[見出し画像]\n\n## 目次\n- このトピックの本質\n- 5秒で分かるポイント\n- 詳細解説\n- 影響・活用例\n- まとめ\n\n---\n\n"
+        header = f"# {title}\n\n*ここに見出し画像を挿入*\n\n"
     else:
-        header = f"# {title}\n\n[Header Image]\n\nTable of Contents:\n- The Core\n- 5-Second Points\n- Detailed Breakdown\n- Impact & Use Cases\n- Conclusion\n\n---\n\n"
-    return header + content
+        header = f"# {title}\n\n*Insert header image here*\n\n"
+    return header + sanitized
 
 
 def save_article(ja_content: str, en_content: str, ja_title: str, en_title: str) -> dict:

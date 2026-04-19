@@ -56,38 +56,50 @@ def _build_prompt(trend, language: str = "ja") -> str:
     cfg = _LANG_CONFIG.get(language, _LANG_CONFIG["ja"])
     m = cfg["m"]
 
-    # より簡潔なプロンプト（トークン節約）
+    # Note/Medium 両対応の簡素Markdown（H2まで、テーブル/コードブロック不使用）
     return f"""Topic: {trend.title}
 URL: {trend.url}
 Context: {trend.description[:200]}
 
-Generate a {language.upper()} article. Return ONLY a valid JSON object with these exact fields:
+Generate a {language.upper()} article. Return ONLY a valid JSON object.
+
+IMPORTANT formatting rules for the `details` field:
+- Use ONLY `##` headings (NO `###` or deeper)
+- NO tables (use bullet lists instead)
+- NO code blocks (```)
+- Use `**bold**`, bullet lists (`-`), and blockquotes (`>`) freely
+- Plain paragraphs between headings
+
+Required JSON fields:
 - title: {cfg['title_hint']}
 - summary: {cfg['summary_hint']}
-- details: Markdown article 1000-1500 chars following this structure:
+- details: Markdown article (1000-1500 chars) with this exact structure:
+
 ## {m[0]} {cfg['sec1']}
-[200文字 core explanation]
+[200 chars: core explanation]
 
 ## {m[1]} {cfg['sec2']}
-- Point 1
-- Point 2
-- Point 3
+- **Point 1**: [brief]
+- **Point 2**: [brief]
+- **Point 3**: [brief]
 
 ## {m[2]} {cfg['sec3']}
-### 1. [Element 1]
-[~150 chars]
+**Element 1**
+[~150 chars paragraph]
 
-### 2. [Element 2]
-[~150 chars]
+**Element 2**
+[~150 chars paragraph]
 
-> 💡 **Insight**: [takeaway]
+> 💡 {"Insight" if language == "en" else "ポイント"}: [key takeaway]
 
 ## {m[3]} {cfg['sec4']}
-- Impact 1
-- Impact 2
+- [Impact 1]
+- [Impact 2]
+- [Impact 3]
 
 ## {m[4]} {cfg['sec5']}
-[Closing]
+[Closing message]
+
 - tags: array of 3 relevant tags
 
 Output valid JSON only, no markdown fences, no extra text."""
@@ -344,7 +356,11 @@ def _call_cohere(prompt: str) -> Optional[str]:
         # v2 API レスポンス形式
         content = data.get("message", {}).get("content", [])
         if content and isinstance(content, list):
-            return content[0].get("text", "")
+            first = content[0]
+            if isinstance(first, dict):
+                return first.get("text", "")
+            if isinstance(first, str):
+                return first
         return None
     except Exception as e:
         print(f"  [Cohere] 例外: {e}")
