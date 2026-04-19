@@ -150,14 +150,28 @@ def _try_parse(text: str) -> Optional[dict]:
     return None
 
 
+def _coerce_str(value) -> str:
+    """値を文字列に強制変換（dict/listは JSON として扱う）"""
+    if value is None:
+        return ""
+    if isinstance(value, str):
+        return value
+    if isinstance(value, (dict, list)):
+        try:
+            return json.dumps(value, ensure_ascii=False, indent=2)
+        except Exception:
+            return str(value)
+    return str(value)
+
+
 def _parse_article(text: str, trend) -> Optional[Article]:
     data = _extract_json(text)
     if not data:
         return None
 
-    title = (data.get("title") or "").strip()
-    details = (data.get("details") or "").strip()
-    summary = (data.get("summary") or "").strip()
+    title = _coerce_str(data.get("title")).strip()
+    details = _coerce_str(data.get("details")).strip()
+    summary = _coerce_str(data.get("summary")).strip()
     tags = data.get("tags")
     if not isinstance(tags, list):
         tags = []
