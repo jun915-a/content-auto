@@ -67,6 +67,7 @@ def _parse_article(text: str, trend) -> Optional[Article]:
         )
     except Exception as e:
         print(f"  [WARN] JSON parse失敗: {e}")
+        print(f"  [DEBUG] 受信テキスト: {text[:300]}")
         return None
 
 
