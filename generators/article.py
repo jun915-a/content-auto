@@ -25,7 +25,7 @@ class ArticleGenerator:
         if not GROQ_API_KEY:
             raise ValueError("GROQ_API_KEY が未設定です")
         self.api_key = GROQ_API_KEY
-        self.model = "mixtral-8x7b-32768"
+        self.model = "llama-3.1-70b-versatile"
 
     def generate(self, trend) -> Optional[Article]:
         prompt = f"""
