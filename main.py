@@ -3,7 +3,7 @@ from config import ARTICLES_PER_DAY, REDDIT_SUBREDDITS
 from sources import RedditSource, HackerNewsSource
 from generators import ArticleGenerator
 from publishers import BloggerPublisher
-from notifier import send_discord
+from notifier import send_discord, send_discord_article
 from tracker import save_entry, is_duplicate_source
 
 
@@ -76,6 +76,7 @@ def run():
         else:
             print(f"  → 投稿失敗: {result.error}")
             send_discord(f"❌ 投稿失敗\n{article.title}\n{result.error}")
+            send_discord_article(article.title, article.to_markdown())
 
     send_discord(f"📊 本日の実行完了: {published}/{ARTICLES_PER_DAY}件投稿")
     print(f"\n完了: {published}/{ARTICLES_PER_DAY}件\n")
