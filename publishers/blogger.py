@@ -48,7 +48,13 @@ class BloggerPublisher(Publisher):
                 post_url = data.get("url", "")
                 return PublishResult(success=True, url=post_url)
             else:
-                error_msg = res.json().get("error", {}).get("message", res.text)
+                try:
+                    error_data = res.json().get("error", {})
+                    error_msg = error_data.get("message", res.text)
+                except:
+                    error_msg = res.text
+                print(f"  [DEBUG] Blogger API Error: {res.status_code}")
+                print(f"  [DEBUG] Full response: {res.text[:500]}")
                 return PublishResult(
                     success=False,
                     error=f"Blogger API {res.status_code}: {error_msg[:200]}",
