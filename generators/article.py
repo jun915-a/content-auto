@@ -24,7 +24,7 @@ class ArticleGenerator:
         if not GEMINI_API_KEY:
             raise ValueError("GEMINI_API_KEY が未設定です")
         self.client = genai.Client(api_key=GEMINI_API_KEY)
-        self.model_name = "gemini-2.0-flash-exp"
+        self.model_name = "gemini-1.5-flash"
 
     def generate(self, trend) -> Optional[Article]:
         prompt = f"""

@@ -11,14 +11,22 @@ def collect_trends() -> list:
     """複数ソースからトレンドを収集"""
     sources = [
         HackerNewsSource(),
-        RedditSource(REDDIT_SUBREDDITS),
     ]
+    # Reddit は GitHub Actions で ブロックされることがあるのでオプション
+    try:
+        sources.append(RedditSource(REDDIT_SUBREDDITS))
+    except Exception:
+        pass
+
     all_trends = []
     for source in sources:
-        print(f"[INFO] {source.name} 取得中...")
-        trends = source.fetch(limit=10)
-        print(f"  {len(trends)}件取得")
-        all_trends.extend(trends)
+        try:
+            print(f"[INFO] {source.name} 取得中...")
+            trends = source.fetch(limit=10)
+            print(f"  {len(trends)}件取得")
+            all_trends.extend(trends)
+        except Exception as e:
+            print(f"[WARN] {source.name} 取得失敗: {e}")
 
     # スコア順 + 重複除外
     unique = {}
