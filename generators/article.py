@@ -20,63 +20,94 @@ class Article:
         )
 
 
-def _build_prompt(trend) -> str:
-    return f"""トピック: {trend.title}
-URL: {trend.url}
-説明: {trend.description[:200]}
+def _build_prompt(trend, language: str = "ja") -> str:
+    lang_config = {
+        "ja": {
+            "title_hint": "日本語タイトル（60文字以内、インパクト重視）",
+            "summary_hint": "冒頭要約（150-200文字、この記事を読むべき理由を明確に）",
+            "section1": "このトピックの本質",
+            "section2": "5秒で分かるポイント",
+            "section3": "詳細解説",
+            "section4": "実世界への影響",
+            "section5": "結論",
+            "marker1": "📌",
+            "marker2": "🎯",
+            "marker3": "📊",
+            "marker4": "🚀",
+            "marker5": "✨",
+        },
+        "en": {
+            "title_hint": "English title (max 70 chars, impactful)",
+            "summary_hint": "Summary (150-200 chars, hook the reader)",
+            "section1": "The Core of This Topic",
+            "section2": "5-Second Key Points",
+            "section3": "Detailed Breakdown",
+            "section4": "Real-World Impact",
+            "section5": "Conclusion",
+            "marker1": "🔑",
+            "marker2": "⚡",
+            "marker3": "📈",
+            "marker4": "🎯",
+            "marker5": "✨",
+        }
+    }
 
-以下のJSON形式で日本語記事を作成してください。JSONのみを返してください。
-**見せ方を最優先に、Noteのような視覚的に分かりやすい記事にしてください。**
+    cfg = lang_config.get(language, lang_config["ja"])
+
+    return f"""Topic: {trend.title}
+URL: {trend.url}
+Description: {trend.description[:200]}
+
+Generate a {language.upper()} article in JSON format. Return ONLY JSON.
+**Prioritize visual clarity and readability.**
 
 {{
-  "title": "日本語タイトル（60文字以内、インパクト重視）",
-  "summary": "冒頭要約（150-200文字、この記事を読むべき理由を明確に）",
-  "details": "マークダウン記事（1000-1500文字、以下の厳密な構造を守ってください）
+  "title": "{cfg['title_hint']}",
+  "summary": "{cfg['summary_hint']}",
+  "details": "Markdown article (1000-1500 chars with this structure):
 
-## 📌 このトピックの本質（200文字）
-[重要な背景や問題を簡潔に]
-
----
-
-## 🎯 5秒で分かるポイント
-- ✓ ポイント1
-- ✓ ポイント2
-- ✓ ポイント3
+## {cfg['marker1']} {cfg['section1']}
+[200 chars explaining the core issue/context]
 
 ---
 
-## 📊 詳細解説
-
-### 1. [主要要素1]
-[段落 150文字程度]
-
-| 観点 | 説明 |
-|------|------|
-| 要素A | [詳細] |
-| 要素B | [詳細] |
-
-### 2. [主要要素2]
-[段落 150文字程度]
-
-> 💡 **ポイント**: [重要な洞察を枠線で強調]
-
-### 3. [主要要素3]
-[段落 150文字程度]
+## {cfg['marker2']} {cfg['section2']}
+- ✓ Point 1
+- ✓ Point 2
+- ✓ Point 3
 
 ---
 
-## 🚀 実世界への影響
-- 影響1
-- 影響2
-- 影響3
+## {cfg['marker3']} {cfg['section3']}
+
+### 1. [Key Element 1]
+[~150 chars]
+
+| Aspect | Description |
+|--------|-------------|
+| A | [Detail] |
+| B | [Detail] |
+
+### 2. [Key Element 2]
+[~150 chars]
+
+> 💡 **Insight**: [Important takeaway]
+
+### 3. [Key Element 3]
+[~150 chars]
 
 ---
 
-## ✨ 結論
-[最後のメッセージ、次アクション示唆]
+## {cfg['marker4']} {cfg['section4']}
+- Impact 1
+- Impact 2
+- Impact 3
 
-",
-  "tags": ["タグ1", "タグ2", "タグ3"]
+---
+
+## {cfg['marker5']} {cfg['section5']}
+[Closing message & next action]",
+  "tags": ["tag1", "tag2", "tag3"]
 }}"""
 
 
@@ -173,26 +204,39 @@ class ArticleGenerator:
         if not GROQ_API_KEY and not GEMINI_API_KEY:
             raise ValueError("GROQ_API_KEY か GEMINI_API_KEY のどちらかが必要です")
 
-    def generate(self, trend) -> Optional[Article]:
-        prompt = _build_prompt(trend)
+    def _generate_one(self, trend, language: str = "ja") -> Optional[Article]:
+        prompt = _build_prompt(trend, language)
 
         # プライマリ: Groq
-        print("  [LLM] Groq 試行中...")
         text = _call_groq(prompt)
         if text:
             article = _parse_article(text, trend)
             if article:
-                print("  [LLM] Groq で生成成功")
                 return article
 
         # フォールバック: Gemini
-        print("  [LLM] Gemini にフォールバック...")
         text = _call_gemini(prompt)
         if text:
             article = _parse_article(text, trend)
             if article:
-                print("  [LLM] Gemini で生成成功")
                 return article
 
-        print("  [LLM] 両方失敗")
         return None
+
+    def generate(self, trend) -> tuple[Optional[Article], Optional[Article]]:
+        """日本語版と英語版を同時生成"""
+        print("  [LLM] 日本語版生成中...")
+        ja_article = self._generate_one(trend, "ja")
+        if ja_article:
+            print("  [LLM] 日本語版成功")
+        else:
+            print("  [LLM] 日本語版失敗")
+
+        print("  [LLM] 英語版生成中...")
+        en_article = self._generate_one(trend, "en")
+        if en_article:
+            print("  [LLM] 英語版成功")
+        else:
+            print("  [LLM] 英語版失敗")
+
+        return ja_article, en_article

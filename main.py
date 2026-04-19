@@ -58,25 +58,29 @@ def run():
 
         print(f"\n[{published + 1}/{ARTICLES_PER_DAY}] 生成中: {trend.title[:60]}...")
 
-        article = generator.generate(trend)
-        if not article:
+        ja_article, en_article = generator.generate(trend)
+        if not ja_article or not en_article:
             print("  → 生成失敗、次へ")
             continue
 
-        print(f"  タイトル: {article.title}")
+        print(f"  日本語タイトル: {ja_article.title}")
+        print(f"  英語タイトル: {en_article.title}")
 
-        # 投稿（画像生成は一旦スキップ）
-        result = publisher.publish(article, image_path=None)
+        # 日本語版を Blogger へ投稿
+        result = publisher.publish(ja_article, image_path=None)
 
         if result.success:
-            save_entry(article.title, result.url, trend.url, article.tags)
-            send_discord(f"✅ 投稿完了\n**{article.title}**\n{result.url}")
-            print(f"  → 投稿成功: {result.url}")
+            save_entry(ja_article.title, result.url, trend.url, ja_article.tags)
+            send_discord(f"✅ Blogger 投稿成功\n**{ja_article.title}**\n{result.url}")
+            send_discord(f"📝 Note用（日本語）\n{ja_article.title}\n{ja_article.to_markdown()[:500]}...")
+            send_discord(f"📝 Medium/Substack/Hashnode用（英語）\n{en_article.title}\n{en_article.to_markdown()[:500]}...")
+            print(f"  → Blogger 投稿成功")
             published += 1
         else:
-            print(f"  → 投稿失敗: {result.error}")
-            send_discord(f"❌ 投稿失敗\n{article.title}\n{result.error}")
-            send_discord_article(article.title, article.to_markdown())
+            print(f"  → Blogger 投稿失敗: {result.error}")
+            send_discord(f"❌ Blogger 投稿失敗\n{ja_article.title}")
+            send_discord_article(f"Note用（日本語）: {ja_article.title}", ja_article.to_markdown())
+            send_discord_article(f"Medium/Substack/Hashnode用（英語）: {en_article.title}", en_article.to_markdown())
 
     send_discord(f"📊 本日の実行完了: {published}/{ARTICLES_PER_DAY}件投稿")
     print(f"\n完了: {published}/{ARTICLES_PER_DAY}件\n")
