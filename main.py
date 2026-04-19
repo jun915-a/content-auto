@@ -81,15 +81,41 @@ def run():
         if result.success:
             save_entry(ja_article.title, result.url, trend.url, ja_article.tags)
             send_discord(f"✅ Blogger 投稿成功\n**{ja_article.title}**\n{result.url}")
-            send_discord(f"📝 Note用（日本語）\n{ja_article.title}\n{storage['ja_url']}")
-            send_discord(f"📝 Medium/Substack/Hashnode用（英語）\n{en_article.title}\n{storage['en_url']}")
+            send_discord(f"""📝 Note用（日本語）
+{ja_article.title}
+
+記事URL: {storage['ja_url']}
+
+**ここから投稿してください:**
+https://note.com/""")
+            send_discord(f"""📝 Medium/Substack/Hashnode用（英語）
+{en_article.title}
+
+記事URL: {storage['en_url']}
+
+**Medium: https://medium.com/new-story**
+**Substack: https://substack.com/**
+**Hashnode: https://hashnode.com/onboarding/new-story**""")
             print(f"  → Blogger 投稿成功")
             published += 1
         else:
             print(f"  → Blogger 投稿失敗: {result.error}")
             send_discord(f"❌ Blogger 投稿失敗\n{ja_article.title}")
-            send_discord(f"📝 Note用（日本語）\n{ja_article.title}\n{storage['ja_url']}")
-            send_discord(f"📝 Medium/Substack/Hashnode用（英語）\n{en_article.title}\n{storage['en_url']}")
+            send_discord(f"""📝 Note用（日本語）
+{ja_article.title}
+
+記事URL: {storage['ja_url']}
+
+**ここから投稿してください:**
+https://note.com/""")
+            send_discord(f"""📝 Medium/Substack/Hashnode用（英語）
+{en_article.title}
+
+記事URL: {storage['en_url']}
+
+**Medium: https://medium.com/new-story**
+**Substack: https://substack.com/**
+**Hashnode: https://hashnode.com/onboarding/new-story**""")
 
     send_discord(f"📊 本日の実行完了: {published}/{ARTICLES_PER_DAY}件投稿")
     print(f"\n完了: {published}/{ARTICLES_PER_DAY}件\n")
