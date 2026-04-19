@@ -20,7 +20,7 @@ class BloggerPublisher(Publisher):
 
         payload = {
             "personalizations": [{"to": [{"email": BLOGGER_BLOG_EMAIL}]}],
-            "from": {"email": "noreply@automation.local", "name": "Content Auto"},
+            "from": {"email": "junconp419@gmail.com", "name": "Content Auto"},
             "subject": subject,
             "content": [{"type": "text/html", "value": content}],
         }
