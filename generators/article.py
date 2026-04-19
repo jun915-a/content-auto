@@ -2,7 +2,15 @@ import requests
 import json
 from dataclasses import dataclass
 from typing import Optional
-from config import GROQ_API_KEY, GEMINI_API_KEY, ARTICLE_TEMPLATE
+from config import (
+    GROQ_API_KEY,
+    GEMINI_API_KEY,
+    MISTRAL_API_KEY,
+    TOGETHER_API_KEY,
+    HF_API_TOKEN,
+    COHERE_API_KEY,
+    ARTICLE_TEMPLATE,
+)
 
 
 @dataclass
@@ -174,7 +182,6 @@ def _call_groq(prompt: str) -> Optional[str]:
 def _call_gemini(prompt: str) -> Optional[str]:
     if not GEMINI_API_KEY:
         return None
-    # 複数モデルを順に試行
     models = ["gemini-2.0-flash", "gemini-2.5-flash", "gemini-1.5-flash"]
     for model in models:
         try:
@@ -199,6 +206,111 @@ def _call_gemini(prompt: str) -> Optional[str]:
     return None
 
 
+def _call_mistral(prompt: str) -> Optional[str]:
+    if not MISTRAL_API_KEY:
+        return None
+    try:
+        res = requests.post(
+            "https://api.mistral.ai/v1/chat/completions",
+            headers={
+                "Authorization": f"Bearer {MISTRAL_API_KEY}",
+                "Content-Type": "application/json",
+            },
+            json={
+                "model": "mistral-large-latest",
+                "messages": [{"role": "user", "content": prompt}],
+                "temperature": 0.7,
+                "max_tokens": 2000,
+            },
+            timeout=30,
+        )
+        if res.status_code != 200:
+            print(f"  [Mistral] {res.status_code}: {res.text[:200]}")
+            return None
+        return res.json()["choices"][0]["message"]["content"]
+    except Exception as e:
+        print(f"  [Mistral] 例外: {e}")
+        return None
+
+
+def _call_together(prompt: str) -> Optional[str]:
+    if not TOGETHER_API_KEY:
+        return None
+    try:
+        res = requests.post(
+            "https://api.together.xyz/v1/chat/completions",
+            headers={
+                "Authorization": f"Bearer {TOGETHER_API_KEY}",
+                "Content-Type": "application/json",
+            },
+            json={
+                "model": "meta-llama/Llama-3-70b-chat-hf",
+                "messages": [{"role": "user", "content": prompt}],
+                "temperature": 0.7,
+                "max_tokens": 2000,
+            },
+            timeout=30,
+        )
+        if res.status_code != 200:
+            print(f"  [Together] {res.status_code}: {res.text[:200]}")
+            return None
+        return res.json()["choices"][0]["message"]["content"]
+    except Exception as e:
+        print(f"  [Together] 例外: {e}")
+        return None
+
+
+def _call_hf(prompt: str) -> Optional[str]:
+    if not HF_API_TOKEN:
+        return None
+    try:
+        res = requests.post(
+            "https://api-inference.huggingface.co/models/meta-llama/Llama-2-70b-chat-hf",
+            headers={"Authorization": f"Bearer {HF_API_TOKEN}"},
+            json={"inputs": prompt},
+            timeout=30,
+        )
+        if res.status_code != 200:
+            print(f"  [HF] {res.status_code}: {res.text[:200]}")
+            return None
+        result = res.json()
+        if isinstance(result, list) and len(result) > 0:
+            return result[0].get("generated_text", "")
+        return None
+    except Exception as e:
+        print(f"  [HF] 例外: {e}")
+        return None
+
+
+def _call_cohere(prompt: str) -> Optional[str]:
+    if not COHERE_API_KEY:
+        return None
+    try:
+        res = requests.post(
+            "https://api.cohere.ai/v1/generate",
+            headers={
+                "Authorization": f"Bearer {COHERE_API_KEY}",
+                "Content-Type": "application/json",
+            },
+            json={
+                "prompt": prompt,
+                "temperature": 0.7,
+                "max_tokens": 2000,
+            },
+            timeout=30,
+        )
+        if res.status_code != 200:
+            print(f"  [Cohere] {res.status_code}: {res.text[:200]}")
+            return None
+        generations = res.json().get("generations", [])
+        if generations:
+            return generations[0].get("text", "")
+        return None
+    except Exception as e:
+        print(f"  [Cohere] 例外: {e}")
+        return None
+
+
 class ArticleGenerator:
     def __init__(self):
         if not GROQ_API_KEY and not GEMINI_API_KEY:
@@ -207,20 +319,25 @@ class ArticleGenerator:
     def _generate_one(self, trend, language: str = "ja") -> Optional[Article]:
         prompt = _build_prompt(trend, language)
 
-        # プライマリ: Groq
-        text = _call_groq(prompt)
-        if text:
-            article = _parse_article(text, trend)
-            if article:
-                return article
+        # フォールバック順: Groq → Gemini → Mistral → Together → HF → Cohere
+        llm_calls = [
+            ("Groq", _call_groq),
+            ("Gemini", _call_gemini),
+            ("Mistral", _call_mistral),
+            ("Together", _call_together),
+            ("HuggingFace", _call_hf),
+            ("Cohere", _call_cohere),
+        ]
 
-        # フォールバック: Gemini
-        text = _call_gemini(prompt)
-        if text:
-            article = _parse_article(text, trend)
-            if article:
-                return article
+        for name, call_func in llm_calls:
+            text = call_func(prompt)
+            if text:
+                article = _parse_article(text, trend)
+                if article:
+                    print(f"  [LLM] {name} で生成成功")
+                    return article
 
+        print("  [LLM] 全て失敗")
         return None
 
     def generate(self, trend) -> tuple[Optional[Article], Optional[Article]]:
