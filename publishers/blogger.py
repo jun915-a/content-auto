@@ -10,6 +10,11 @@ class BloggerPublisher(Publisher):
 
     def publish(self, article, image_path: Optional[str] = None) -> PublishResult:
         if not BLOGGER_API_KEY or not BLOGGER_BLOG_ID:
+            import os
+            print(f"  [DEBUG] env BLOGGER_API_KEY: {os.environ.get('BLOGGER_API_KEY', 'NOT_IN_ENV')[:20]}")
+            print(f"  [DEBUG] env BLOGGER_BLOG_ID: {os.environ.get('BLOGGER_BLOG_ID', 'NOT_IN_ENV')}")
+            print(f"  [DEBUG] config BLOGGER_API_KEY: {BLOGGER_API_KEY[:20] if BLOGGER_API_KEY else 'EMPTY'}")
+            print(f"  [DEBUG] config BLOGGER_BLOG_ID: {BLOGGER_BLOG_ID if BLOGGER_BLOG_ID else 'EMPTY'}")
             return PublishResult(
                 success=False,
                 error="BLOGGER_API_KEY または BLOGGER_BLOG_ID が未設定",
