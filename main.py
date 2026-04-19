@@ -3,8 +3,9 @@ from config import ARTICLES_PER_DAY, REDDIT_SUBREDDITS
 from sources import RedditSource, HackerNewsSource
 from generators import ArticleGenerator
 from publishers import BloggerPublisher
-from notifier import send_discord, send_discord_article
+from notifier import send_discord
 from tracker import save_entry, is_duplicate_source
+from article_storage import save_article, commit_articles, cleanup_old_articles
 
 
 def collect_trends() -> list:
@@ -69,21 +70,37 @@ def run():
         # 日本語版を Blogger へ投稿
         result = publisher.publish(ja_article, image_path=None)
 
+        # 記事を GitHub に保存
+        storage = save_article(
+            ja_article.to_markdown(),
+            en_article.to_markdown(),
+            ja_article.title,
+            en_article.title,
+        )
+
         if result.success:
             save_entry(ja_article.title, result.url, trend.url, ja_article.tags)
             send_discord(f"✅ Blogger 投稿成功\n**{ja_article.title}**\n{result.url}")
-            send_discord(f"📝 Note用（日本語）\n{ja_article.title}\n{ja_article.to_markdown()[:500]}...")
-            send_discord(f"📝 Medium/Substack/Hashnode用（英語）\n{en_article.title}\n{en_article.to_markdown()[:500]}...")
+            send_discord(f"📝 Note用（日本語）\n{ja_article.title}\n{storage['ja_url']}")
+            send_discord(f"📝 Medium/Substack/Hashnode用（英語）\n{en_article.title}\n{storage['en_url']}")
             print(f"  → Blogger 投稿成功")
             published += 1
         else:
             print(f"  → Blogger 投稿失敗: {result.error}")
             send_discord(f"❌ Blogger 投稿失敗\n{ja_article.title}")
-            send_discord_article(f"Note用（日本語）: {ja_article.title}", ja_article.to_markdown())
-            send_discord_article(f"Medium/Substack/Hashnode用（英語）: {en_article.title}", en_article.to_markdown())
+            send_discord(f"📝 Note用（日本語）\n{ja_article.title}\n{storage['ja_url']}")
+            send_discord(f"📝 Medium/Substack/Hashnode用（英語）\n{en_article.title}\n{storage['en_url']}")
 
     send_discord(f"📊 本日の実行完了: {published}/{ARTICLES_PER_DAY}件投稿")
     print(f"\n完了: {published}/{ARTICLES_PER_DAY}件\n")
+
+    # 記事を GitHub に commit
+    print("[GIT] 記事を保存中...")
+    commit_articles()
+
+    # 古い記事を削除
+    print("[CLEANUP] 古い記事をチェック中...")
+    cleanup_old_articles(max_articles=100)
 
 
 if __name__ == "__main__":
