@@ -1,7 +1,7 @@
 from datetime import datetime
 from config import ARTICLES_PER_DAY, REDDIT_SUBREDDITS
 from sources import RedditSource, HackerNewsSource
-from generators import ArticleGenerator, ImageGenerator
+from generators import ArticleGenerator
 from publishers import BloggerPublisher
 from notifier import send_discord
 from tracker import save_entry, is_duplicate_source
@@ -49,7 +49,6 @@ def run():
         return
 
     generator = ArticleGenerator()
-    image_gen = ImageGenerator()
     publisher = BloggerPublisher()
 
     published = 0
@@ -66,12 +65,8 @@ def run():
 
         print(f"  タイトル: {article.title}")
 
-        # 画像生成
-        image_prompt = f"blog header image for article about {article.title}, modern minimalist style"
-        image_path = image_gen.generate(image_prompt, f"image_{published}.png")
-
-        # 投稿
-        result = publisher.publish(article, image_path)
+        # 投稿（画像生成は一旦スキップ）
+        result = publisher.publish(article, image_path=None)
 
         if result.success:
             save_entry(article.title, result.url, trend.url, article.tags)
