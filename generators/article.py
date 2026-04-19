@@ -2,7 +2,7 @@ import requests
 import json
 from dataclasses import dataclass
 from typing import Optional
-from config import GEMINI_API_KEY, ARTICLE_TEMPLATE
+from config import GROQ_API_KEY, ARTICLE_TEMPLATE
 
 
 @dataclass
@@ -22,9 +22,10 @@ class Article:
 
 class ArticleGenerator:
     def __init__(self):
-        if not GEMINI_API_KEY:
-            raise ValueError("GEMINI_API_KEY が未設定です")
-        self.api_key = GEMINI_API_KEY
+        if not GROQ_API_KEY:
+            raise ValueError("GROQ_API_KEY が未設定です")
+        self.api_key = GROQ_API_KEY
+        self.model = "mixtral-8x7b-32768"
 
     def generate(self, trend) -> Optional[Article]:
         prompt = f"""
@@ -49,35 +50,28 @@ class ArticleGenerator:
 """
 
         try:
-            url = f"https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent"
-            headers = {"Content-Type": "application/json"}
+            url = "https://api.groq.com/openai/v1/chat/completions"
+            headers = {
+                "Authorization": f"Bearer {self.api_key}",
+                "Content-Type": "application/json",
+            }
             payload = {
-                "contents": [{"parts": [{"text": prompt}]}],
-                "generationConfig": {
-                    "temperature": 0.7,
-                    "topK": 40,
-                    "topP": 0.95,
-                },
+                "model": self.model,
+                "messages": [{"role": "user", "content": prompt}],
+                "temperature": 0.7,
+                "max_tokens": 2000,
             }
 
-            res = requests.post(
-                url,
-                headers=headers,
-                params={"key": self.api_key},
-                json=payload,
-                timeout=30,
-            )
+            res = requests.post(url, headers=headers, json=payload, timeout=30)
 
             if res.status_code != 200:
-                print(f"[ERROR] Gemini API {res.status_code}: {res.text[:200]}")
+                error_data = res.json().get("error", {})
+                error_msg = error_data.get("message", res.text)
+                print(f"[ERROR] Groq API {res.status_code}: {error_msg[:200]}")
                 return None
 
             data = res.json()
-            candidates = data.get("candidates", [])
-            if not candidates:
-                return None
-
-            text = candidates[0].get("content", {}).get("parts", [{}])[0].get("text", "")
+            text = data.get("choices", [{}])[0].get("message", {}).get("content", "")
 
             # JSONを抽出
             if "```json" in text:
