@@ -1,5 +1,16 @@
 # Shader Lab: The Photoshop for Shaders You’ve Been Waiting For
 
+[Header Image]
+
+Table of Contents:
+- The Core
+- 5-Second Points
+- Detailed Breakdown
+- Impact & Use Cases
+- Conclusion
+
+---
+
 
 Discover Shader Lab, a revolutionary tool that simplifies shader creation with a visual, Photoshop-like interface. Perfect for developers and artists alike, it bridges the gap between coding and creativity.
 
