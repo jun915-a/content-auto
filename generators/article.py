@@ -57,7 +57,9 @@ def _parse_article(text: str, trend) -> Optional[Article]:
         text = text[start:end + 1]
 
     try:
-        data = json.loads(text)
+        # 制御文字をエスケープ（改行やタブを正しくJSON形式に）
+        text = text.encode('utf-8', errors='ignore').decode('utf-8')
+        data = json.loads(text, strict=False)
         return Article(
             title=data.get("title", trend.title),
             summary=data.get("summary", ""),
