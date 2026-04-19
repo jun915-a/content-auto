@@ -15,6 +15,7 @@ def send_discord(message: str):
 def send_discord_article(title: str, content: str):
     """記事をDiscordに送信（コピペ用）"""
     if not DISCORD_WEBHOOK_URL:
+        print("[WARN] DISCORD_WEBHOOK_URL が未設定")
         return
     try:
         message = f"""📄 **{title}**

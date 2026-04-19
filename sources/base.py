@@ -10,6 +10,7 @@ class TrendItem:
     source: str
     score: int = 0
     description: str = ""
+    virality_score: int = 0
 
 
 class TrendSource(ABC):

@@ -1,6 +1,6 @@
 import requests
 from typing import Optional
-from config import SENDGRID_API_KEY, BLOGGER_BLOG_EMAIL
+from config import SENDGRID_API_KEY, BLOGGER_BLOG_EMAIL, SENDGRID_FROM_EMAIL
 from .base import Publisher, PublishResult
 
 
@@ -20,7 +20,7 @@ class BloggerPublisher(Publisher):
 
         payload = {
             "personalizations": [{"to": [{"email": BLOGGER_BLOG_EMAIL}]}],
-            "from": {"email": "junconp419@gmail.com", "name": "Content Auto"},
+            "from": {"email": SENDGRID_FROM_EMAIL, "name": "Content Auto"},
             "subject": subject,
             "content": [{"type": "text/html", "value": content}],
         }

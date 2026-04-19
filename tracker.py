@@ -11,8 +11,13 @@ def load_history() -> List[Dict]:
         return []
     try:
         with open(HISTORY_FILE) as f:
-            return json.load(f)
-    except Exception:
+            data = json.load(f)
+            if not isinstance(data, list):
+                print(f"[WARN] {HISTORY_FILE} is not a list, resetting")
+                return []
+            return data
+    except Exception as e:
+        print(f"[WARN] Failed to load {HISTORY_FILE}: {e}")
         return []
 
 

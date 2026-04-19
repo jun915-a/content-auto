@@ -6,35 +6,45 @@ from publishers import BloggerPublisher
 from notifier import send_discord
 from tracker import save_entry, is_duplicate_source
 from article_storage import save_article, commit_articles, cleanup_old_articles
+from trend_ranker import rank_trends
 
 
 def collect_trends() -> list:
-    """複数ソースからトレンドを収集"""
+    """複数ソースからトレンドを収集 → バズ度で厳選"""
     sources = [
         HackerNewsSource(),
     ]
     # Reddit は GitHub Actions で ブロックされることがあるのでオプション
     try:
         sources.append(RedditSource(REDDIT_SUBREDDITS))
-    except Exception:
-        pass
+    except Exception as e:
+        print(f"[WARN] Reddit ソース初期化失敗: {e}")
 
     all_trends = []
     for source in sources:
         try:
             print(f"[INFO] {source.name} 取得中...")
-            trends = source.fetch(limit=10)
+            trends = source.fetch(limit=30)  # 多めに取得してから厳選
             print(f"  {len(trends)}件取得")
             all_trends.extend(trends)
         except Exception as e:
             print(f"[WARN] {source.name} 取得失敗: {e}")
 
-    # スコア順 + 重複除外
+    # 重複除外
     unique = {}
     for t in all_trends:
         if not is_duplicate_source(t.url):
             unique[t.url] = t
-    return sorted(unique.values(), key=lambda x: x.score, reverse=True)
+
+    # バズ度でランキング
+    ranked = rank_trends(list(unique.values()), min_score=10)
+    print(f"[INFO] {len(unique)}件 → バズ度フィルタ後 {len(ranked)}件")
+
+    # 上位の概要を表示
+    for i, t in enumerate(ranked[:10]):
+        print(f"  #{i+1} [バズ度:{t.virality_score}] {t.title[:60]}")
+
+    return ranked
 
 
 def run():
