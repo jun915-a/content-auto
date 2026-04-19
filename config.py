@@ -14,7 +14,7 @@ BLOGGER_BLOG_EMAIL = os.environ.get("BLOGGER_BLOG_EMAIL", "")
 DISCORD_WEBHOOK_URL = os.environ.get("DISCORD_WEBHOOK_URL", "")
 
 # 生成記事数（1日あたり）
-ARTICLES_PER_DAY = 3
+ARTICLES_PER_DAY = 10
 
 # ニッチ（初期はテック/AI）
 NICHE_KEYWORDS = ["AI", "machine learning", "LLM", "GPT", "Claude",

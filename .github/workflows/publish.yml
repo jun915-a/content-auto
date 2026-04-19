@@ -2,8 +2,8 @@ name: Auto Publish Articles
 
 on:
   schedule:
-    # 3時間ごとに実行（24時間で8回チェック、完成次第投稿）
-    - cron: "0 */3 * * *"
+    # 2時間ごとに実行（24時間で12回チェック、1回あたり10件で1日120件）
+    - cron: "0 */2 * * *"
   workflow_dispatch:
 
 jobs:
