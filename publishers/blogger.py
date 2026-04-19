@@ -39,7 +39,7 @@ class BloggerPublisher(Publisher):
             if res.status_code in (200, 201, 202):
                 return PublishResult(
                     success=True,
-                    url=f"https://www.blogger.com (Posted via email)",
+                    url="https://www.blogger.com (Posted via email)",
                 )
             else:
                 print(f"  [DEBUG] SendGrid Error: {res.status_code}")

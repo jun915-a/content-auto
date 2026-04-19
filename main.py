@@ -9,6 +9,27 @@ from article_storage import save_article, commit_articles, cleanup_old_articles
 from trend_ranker import rank_trends
 
 
+def _notify_manual_posts(ja_title: str, en_title: str, storage: dict):
+    """Note / Medium 等の手動投稿用URLを Discord に送る"""
+    send_discord(f"""📝 Note用（日本語）
+{ja_title}
+
+**Note風（綺麗版）:** {storage['ja_formatted_url']}
+**シンプルmd:** {storage['ja_simple_url']}
+
+**ここから投稿してください:**
+https://note.com/""")
+    send_discord(f"""📝 Medium/Substack/Hashnode用（英語）
+{en_title}
+
+**Note風（綺麗版）:** {storage['en_formatted_url']}
+**シンプルmd:** {storage['en_simple_url']}
+
+**Medium: https://medium.com/new-story**
+**Substack: https://substack.com/**
+**Hashnode: https://hashnode.com/onboarding/new-story**""")
+
+
 def collect_trends() -> list:
     """複数ソースからトレンドを収集 → バズ度で厳選"""
     sources = [
@@ -91,47 +112,15 @@ def run():
         if result.success:
             save_entry(ja_article.title, result.url, trend.url, ja_article.tags)
             send_discord(f"✅ Blogger 投稿成功\n**{ja_article.title}**\n{result.url}")
-            send_discord(f"""📝 Note用（日本語）
-{ja_article.title}
-
-**Note風（綺麗版）:** {storage['ja_formatted_url']}
-**シンプルmd:** {storage['ja_simple_url']}
-
-**ここから投稿してください:**
-https://note.com/""")
-            send_discord(f"""📝 Medium/Substack/Hashnode用（英語）
-{en_article.title}
-
-**Note風（綺麗版）:** {storage['en_formatted_url']}
-**シンプルmd:** {storage['en_simple_url']}
-
-**Medium: https://medium.com/new-story**
-**Substack: https://substack.com/**
-**Hashnode: https://hashnode.com/onboarding/new-story**""")
             print(f"  → Blogger 投稿成功")
             published += 1
         else:
             print(f"  → Blogger 投稿失敗: {result.error}")
             send_discord(f"❌ Blogger 投稿失敗\n{ja_article.title}")
-            send_discord(f"""📝 Note用（日本語）
-{ja_article.title}
 
-**Note風（綺麗版）:** {storage['ja_formatted_url']}
-**シンプルmd:** {storage['ja_simple_url']}
+        _notify_manual_posts(ja_article.title, en_article.title, storage)
 
-**ここから投稿してください:**
-https://note.com/""")
-            send_discord(f"""📝 Medium/Substack/Hashnode用（英語）
-{en_article.title}
-
-**Note風（綺麗版）:** {storage['en_formatted_url']}
-**シンプルmd:** {storage['en_simple_url']}
-
-**Medium: https://medium.com/new-story**
-**Substack: https://substack.com/**
-**Hashnode: https://hashnode.com/onboarding/new-story**""")
-
-    send_discord(f"📊 本日の実行完了: {published}/{ARTICLES_PER_DAY}件投稿")
+    send_discord(f"📊 実行完了: {published}/{ARTICLES_PER_DAY}件投稿")
     print(f"\n完了: {published}/{ARTICLES_PER_DAY}件\n")
 
     # 記事を GitHub に commit

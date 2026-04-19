@@ -4,7 +4,6 @@ import shutil
 import subprocess
 from datetime import datetime
 from pathlib import Path
-from typing import Optional
 
 ARTICLES_DIR = "articles"
 GIT_REPO_URL = "https://github.com/jun915-a/content-auto"
@@ -16,7 +15,7 @@ def ensure_dir():
     Path(ARTICLES_DIR).mkdir(exist_ok=True)
 
 
-def get_article_dir() -> str:
+def get_article_dir() -> tuple[str, str]:
     """記事用ディレクトリ（日付+時刻で一意性確保）"""
     timestamp = datetime.now().strftime("%Y-%m-%d-%H%M%S")
     date_dir = os.path.join(ARTICLES_DIR, timestamp)

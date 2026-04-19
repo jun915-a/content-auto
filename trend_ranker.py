@@ -1,6 +1,9 @@
 """バズりそうなトレンドを厳選するスコアリング"""
 import re
+from datetime import datetime
 from typing import List
+
+_CURRENT_YEAR = str(datetime.now().year)
 
 
 # バズ度を上げるキーワード（大文字小文字区別せず部分一致）
@@ -46,8 +49,8 @@ POSITIVE_KEYWORDS = {
     "fastest": 10, "largest": 10, "smallest": 8,
     "cheapest": 10, "best ever": 12, "most powerful": 12,
 
-    # 時事性
-    "2026": 10, "just released": 15, "today": 5,
+    # 時事性（"2026" 等の現在年は動的に付与）
+    "just released": 15, "today": 5,
     "breaking": 15, "urgent": 12,
 
     # 興味喚起
@@ -99,6 +102,10 @@ def score_virality(title: str, description: str = "", base_score: int = 0) -> in
     for kw, pts in POSITIVE_KEYWORDS.items():
         if kw in text:
             score += pts
+
+    # 現在年ブースト（時事性）
+    if _CURRENT_YEAR in text:
+        score += 10
 
     for kw, pts in NEGATIVE_KEYWORDS.items():
         if kw in text:
