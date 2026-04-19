@@ -1,5 +1,4 @@
 import os
-import json
 import subprocess
 from datetime import datetime
 from pathlib import Path
@@ -23,31 +22,51 @@ def get_today_dir() -> str:
     return date_dir
 
 
+def _format_note_style(title: str, content: str, language: str = "ja") -> str:
+    """Note 風のフォーマット（見出し、目次風）"""
+    if language == "ja":
+        header = f"# {title}\n\n[見出し画像]\n\n## 目次\n- このトピックの本質\n- 5秒で分かるポイント\n- 詳細解説\n- 影響・活用例\n- まとめ\n\n---\n\n"
+    else:
+        header = f"# {title}\n\n[Header Image]\n\nTable of Contents:\n- The Core\n- 5-Second Points\n- Detailed Breakdown\n- Impact & Use Cases\n- Conclusion\n\n---\n\n"
+    return header + content
+
+
 def save_article(ja_content: str, en_content: str, ja_title: str, en_title: str) -> dict:
-    """記事を保存して GitHub URL を返す"""
+    """4 つのファイル形式で記事を保存"""
     ensure_dir()
     date_dir = get_today_dir()
 
-    # 記事保存
-    ja_file = os.path.join(date_dir, "ja.md")
-    en_file = os.path.join(date_dir, "en.md")
+    # 1. シンプル md（タイトル + 内容）
+    ja_simple = os.path.join(date_dir, "ja.md")
+    en_simple = os.path.join(date_dir, "en.md")
 
-    with open(ja_file, "w", encoding="utf-8") as f:
+    with open(ja_simple, "w", encoding="utf-8") as f:
         f.write(f"# {ja_title}\n\n{ja_content}")
 
-    with open(en_file, "w", encoding="utf-8") as f:
+    with open(en_simple, "w", encoding="utf-8") as f:
         f.write(f"# {en_title}\n\n{en_content}")
+
+    # 2. Note 風フォーマット（見出し、目次付き）
+    ja_formatted = os.path.join(date_dir, "ja_formatted.md")
+    en_formatted = os.path.join(date_dir, "en_formatted.md")
+
+    with open(ja_formatted, "w", encoding="utf-8") as f:
+        f.write(_format_note_style(ja_title, ja_content, "ja"))
+
+    with open(en_formatted, "w", encoding="utf-8") as f:
+        f.write(_format_note_style(en_title, en_content, "en"))
 
     # GitHub Raw URL
     date_part = datetime.now().strftime("%Y-%m-%d")
-    ja_url = f"{RAW_BASE_URL}/{ARTICLES_DIR}/{date_part}/ja.md"
-    en_url = f"{RAW_BASE_URL}/{ARTICLES_DIR}/{date_part}/en.md"
-
     return {
-        "ja_file": ja_file,
-        "en_file": en_file,
-        "ja_url": ja_url,
-        "en_url": en_url,
+        "ja_simple": ja_simple,
+        "en_simple": en_simple,
+        "ja_formatted": ja_formatted,
+        "en_formatted": en_formatted,
+        "ja_simple_url": f"{RAW_BASE_URL}/{ARTICLES_DIR}/{date_part}/ja.md",
+        "en_simple_url": f"{RAW_BASE_URL}/{ARTICLES_DIR}/{date_part}/en.md",
+        "ja_formatted_url": f"{RAW_BASE_URL}/{ARTICLES_DIR}/{date_part}/ja_formatted.md",
+        "en_formatted_url": f"{RAW_BASE_URL}/{ARTICLES_DIR}/{date_part}/en_formatted.md",
         "date": date_part,
     }
 

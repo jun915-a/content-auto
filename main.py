@@ -84,14 +84,16 @@ def run():
             send_discord(f"""📝 Note用（日本語）
 {ja_article.title}
 
-記事URL: {storage['ja_url']}
+**Note風（綺麗版）:** {storage['ja_formatted_url']}
+**シンプルmd:** {storage['ja_simple_url']}
 
 **ここから投稿してください:**
 https://note.com/""")
             send_discord(f"""📝 Medium/Substack/Hashnode用（英語）
 {en_article.title}
 
-記事URL: {storage['en_url']}
+**Note風（綺麗版）:** {storage['en_formatted_url']}
+**シンプルmd:** {storage['en_simple_url']}
 
 **Medium: https://medium.com/new-story**
 **Substack: https://substack.com/**
@@ -104,14 +106,16 @@ https://note.com/""")
             send_discord(f"""📝 Note用（日本語）
 {ja_article.title}
 
-記事URL: {storage['ja_url']}
+**Note風（綺麗版）:** {storage['ja_formatted_url']}
+**シンプルmd:** {storage['ja_simple_url']}
 
 **ここから投稿してください:**
 https://note.com/""")
             send_discord(f"""📝 Medium/Substack/Hashnode用（英語）
 {en_article.title}
 
-記事URL: {storage['en_url']}
+**Note風（綺麗版）:** {storage['en_formatted_url']}
+**シンプルmd:** {storage['en_simple_url']}
 
 **Medium: https://medium.com/new-story**
 **Substack: https://substack.com/**
