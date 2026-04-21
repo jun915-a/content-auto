@@ -11,7 +11,7 @@ class RedditSource(TrendSource):
 
     def fetch(self, limit: int = 10) -> List[TrendItem]:
         items = []
-        headers = {"User-Agent": "content-auto:v1.0 (trend scanner)"}
+        headers = {"User-Agent": "auto-blog-generator:v1.0 (trend scanner)"}
 
         for sub in self.subreddits:
             url = f"https://www.reddit.com/r/{sub}/top.json?t=day&limit={limit}"

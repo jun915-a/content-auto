@@ -6,7 +6,7 @@ from datetime import datetime
 from pathlib import Path
 
 ARTICLES_DIR = "articles"
-GIT_REPO_URL = "https://github.com/jun915-a/content-auto"
+GIT_REPO_URL = "https://github.com/jun915-a/auto-blog-generator"
 RAW_BASE_URL = f"{GIT_REPO_URL}/raw/main"
 
 
