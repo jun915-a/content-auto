@@ -1,0 +1,12 @@
+# How Alberta Became Rat-Free: A Decades-Long War
+
+*Insert header image here*
+
+Discover how Alberta eliminated rats in just 70 years through relentless eradication and public vigilance—making it the only rat-free province in North America.
+
+{
+  "## 🔑 The Core of This Topic": "Alberta’s rat eradication program is a rare conservation success story. By enforcing strict measures and rallying public support, the province eliminated rats in 70 years, becoming North America’s only rat-free region. The fight continues to keep it that way.",
+  "## ⚡ 5-Second Key Points": "- **Relentless Surveillance**: Trained teams inspect farms, grain elevators, and railroads for rat signs.",
+  "- **Zero Tolerance Policy**: Any rat sighting triggers immediate action, including poison bait and traps if needed—no second chances given to rats in Alberta since 1950s rules were tightened in 2000s, especially post-2009 rat detection in Medicine Hat that sparked renewed efforts and funding under the government’s rat-free strategy announced in 2012 to fully secure the province by 2040 under the Rat Control Program managed by Alberta Agriculture and Forestry, with support from municipalities and landowners, maintaining zero tolerance since 2009, with the last rat colony detected in 2007 near Warner leading to an intensive response and eventual eradication by 2008, marking the province rat-free for over a decade now, with the Zero-tolerance program first implemented in 1950, expanded in 2000s to cover entire province after rat infestations in southeastern Alberta were finally contained through coordinated efforts.": "Thanks to Alberta’s **rat-free status**, residents and farmers save millions annually in crop damage and pest control costs. The province’s strict border monitoring at its southern limits prevents rat reintroductions, ensuring long-term success.",
+  "- **Public Engagement**: Landowners and the public play a crucial role in reporting rat sightings and maintaining rat-proofing standards on their properties.": "Alberta’s rat eradication story is a model for invasive species control, proving that persistence and collaboration can overcome even the most stubborn pests."
+}
