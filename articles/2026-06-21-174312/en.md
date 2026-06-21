@@ -1,0 +1,16 @@
+# Why Developers Still Get CORS Wrong in 2024
+
+CORS isn’t just a checkbox—it’s a security layer many developers misuse. This article breaks down common misconceptions and why they persist, despite years of fixes.
+
+{
+  "## 🔑 The Core of This Topic": "CORS (Cross-Origin Resource Sharing) is a browser security mechanism that developers frequently misunderstand or misconfigure. The confusion stems from its dual role as both a protection tool and a development hurdle, often leading to over-permissive policies or unnecessary errors.",
+  "## ⚡ 5-Second Key Points": "- CORS restricts cross-origin requests to prevent malicious data access\n- Developers often enable `*` (wildcard) origins, defeating CORS’s purpose\n- Misconfigurations cause 403 errors or unintended data leaks\n- Preflight requests (OPTIONS) are frequently overlooked\n- Many frameworks handle CORS poorly by default",
+  "## 📈 Detailed Breakdown": "**Element 1**\nCORS is misunderstood because developers conflate it with other web security features like CSRF tokens or SOP (Same-Origin Policy). While SOP blocks all cross-origin requests by default, CORS *relaxes* those restrictions—but only if configured correctly. The `Access-Control-Allow-Origin` header is the most abused, with developers sloppily setting it to `*` to \"just make it work,\" inadvertently removing all security benefits. This habit persists because debugging CORS errors feels like jumping through hoops, and the immediate fix (wildcard) is tempting but dangerous.\n\n**Element 2**\nPreflight requests are the Achilles’ heel of CORS. When a browser detects a cross-origin request with certain headers (e.g., `PUT`, `DELETE`, or custom headers), it sends an `OPTIONS` request first to check if the server allows the action. Many developers forget to implement these preflight endpoints, leading to silent failures or cryptic 403 errors. Frameworks like Express.js or Django often require manual setup for preflight handling, and without it, APIs appear broken to users. This oversight is compounded by the fact that preflight requests aren’t logged prominently in browser dev tools, making them easy to miss.",
+  "\n> 💡 Insight: CORS isn’t the enemy—misconfiguration is. The header `Access-Control-Allow-Origin: *` is a red flag for security auditors, yet it’s the go-to fix for many developers facing CORS errors. The real solution lies in understanding the request’s purpose and applying the *least privilege* principle to origins, methods, and headers.\n\n## 🎯 Real-World Impact": "- **Security Risks**: Wildcard origins expose APIs to data theft or CSRF attacks, especially in federated systems where users share resources across domains.\n- **Development Delays**: Misconfigured CORS blocks front-end integrations, forcing developers to waste hours debugging instead of coding.\n- **User Experience**: Broken CORS policies manifest as failed API calls, leading to broken features or app crashes in production.",
+  "## ✨ Conclusion": "CORS isn’t complicated—it’s just unforgiving. The next time you see a CORS error, resist the urge to slap a wildcard header on it. Instead, ask: *What origin needs access? What methods and headers are required?* A little precision goes a long way in keeping your app secure and functional.",
+  "tags": [
+    "CORS",
+    "Web Security",
+    "API Development"
+  ]
+}
