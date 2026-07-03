@@ -1,0 +1,18 @@
+# Immich 3.0: What’s New and Why It Matters for Your Photos
+
+*Insert header image here*
+
+Immich 3.0 is here with groundbreaking features that redefine self-hosted photo management. Discover how this update transforms your digital memories.
+
+{
+  "## 🔑 The Core of This Topic": "Immich 3.0 introduces transformative updates, including AI-powered search, enhanced sharing, and a redesigned UI. This release focuses on usability, performance, and integration, making photo management effortless for everyone.",
+  "## ⚡ 5-Second Key Points": "- **AI Search**: Instantly find photos using natural language queries (e.g., \"beach sunset 2023\")\n- **Unified Sharing**: Share albums with anyone via a single link, even without an Immich account\n- **Revamped UI**: Sleek, intuitive interface with faster navigation and customizable themes\n- **Performance Boost**: Faster uploads, smoother browsing, and reduced resource usage\n- **Cross-Platform Sync**: Seamless syncing across mobile, desktop, and web",
+  "## 📈 Detailed Breakdown": "**AI-Powered Search Engine**\nImmich 3.0 leverages AI to revolutionize photo search. Instead of sifting through folders, users can type queries like \"family reunion 2024\" or \"dog in the park\" to instantly locate relevant images. This eliminates the guesswork and saves hours of manual searching. The AI recognizes objects, scenes, and even text within images, making it smarter than traditional tagging systems.\n\n> 💡 Insight: AI search turns Immich from a storage tool into an intelligent photo assistant, adapting to how you remember your memories.\n\n**Unified Sharing and Collaboration**\nThe new sharing system simplifies album distribution. Users can generate shareable links for albums, which can be accessed by anyone—no Immich account required. This is perfect for sharing events, projects, or family albums with friends and colleagues. Additionally, shared albums now support comments, reactions, and real-time updates, fostering collaboration.\n\n\n**Performance and Usability Upgrades**\nImmich 3.0 delivers significant performance improvements. Upload speeds are faster, and the app consumes less memory, making it ideal for larger libraries. The redesigned UI prioritizes accessibility with customizable themes, improved touch targets, and a more intuitive layout. Users can now personalize their experience to match their workflow, whether they're on mobile or desktop.",
+  "## 🎯 Real-World Impact": "- **For Photographers**: AI search accelerates workflow by instantly locating specific shots, reducing time spent organizing.\n- **For Families**: Sharing albums with relatives is now seamless, eliminating the hassle of emailing or messaging individual photos.\n- **For Teams**: Collaborative projects benefit from shared albums with comments and reactions, streamlining feedback and updates.",
+  "## ✨ Conclusion": "Immich 3.0 isn’t just an update—it’s a leap forward in self-hosted photo management. With AI search, unified sharing, and a revamped UI, it transforms how you store, find, and share your digital memories. Whether you’re a casual user or a professional, this release makes photo management smarter, faster, and more enjoyable.",
+  "tags": [
+    "Immich",
+    "photo management",
+    "self-hosted"
+  ]
+}
