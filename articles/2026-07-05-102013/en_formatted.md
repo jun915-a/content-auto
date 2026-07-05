@@ -1,0 +1,18 @@
+# Shadcn/UI Pivots to Base UI: What You Missed
+
+*Insert header image here*
+
+Shadcn/UI’s latest default shift from Radix to Base UI is reshaping component development. Discover why this change matters and how it impacts your projects.
+
+{
+  "## 🔑 The Core of This Topic": "Shadcn/UI has officially made Base UI its default UI library, replacing Radix UI as the go-to foundation for its components. This strategic move aims to streamline development and improve accessibility. The change reflects a broader trend toward simplicity and performance in UI tooling.",
+  "## ⚡ 5-Second Key Points": "- **Base UI is now the default**: Shadcn/UI components now rely on Base UI instead of Radix UI for foundational elements.\n- **Radix UI remains available**: Developers can still use Radix UI but must explicitly opt in.\n- **Accessibility improvements**: Base UI offers built-in accessibility features, reducing setup complexity.\n- **Performance boost**: Base UI is designed for faster rendering and smaller bundle sizes.\n- **Backward compatibility**: Existing projects using Radix UI will continue to work, but new projects should adopt Base UI.",
+  "## 📈 Detailed Breakdown": "**Why Base UI?** Base UI is a lightweight, accessible, and highly performant UI library developed by the creators of Radix UI. It simplifies component development by offering pre-built, accessible primitives that require minimal customization. Unlike Radix UI, which often requires additional setup for accessibility, Base UI integrates these features by default, making it ideal for developers who prioritize speed and simplicity.",
+  "**Radix UI’s Legacy** Radix UI was once the backbone of Shadcn/UI, praised for its unstyled, accessible components. However, the shift to Base UI suggests a need for even greater simplicity and performance. Radix UI will still be supported, but the default migration signals a preference for Base UI’s out-of-the-box accessibility and smaller footprint. This change aligns with Shadcn/UI’s mission to provide a seamless, developer-friendly experience with minimal overhead.\n\n> 💡 Insight: The move to Base UI underscores a growing trend in UI libraries: prioritizing accessibility and performance without sacrificing flexibility. Developers can now build accessible components with less boilerplate, reducing the risk of accessibility gaps in their projects.\n\n## 🎯 Real-World Impact": "- **Faster Development**: Base UI’s built-in accessibility and performance optimizations reduce the need for custom setup, allowing developers to ship features quicker.\n- **Improved Accessibility**: Projects built with Base UI are less likely to have accessibility flaws, as the library handles many edge cases by default.\n- **Smaller Bundle Sizes**: Base UI’s lean architecture results in smaller JavaScript bundles, improving load times and SEO rankings.",
+  "## ✨ Conclusion": "Shadcn/UI’s switch to Base UI marks a significant evolution in its approach to component development. By prioritizing accessibility, performance, and simplicity, the framework empowers developers to build better user experiences with less effort. Whether you’re starting a new project or migrating an existing one, now is the time to explore Base UI and embrace the future of UI tooling.",
+  "tags": [
+    "Shadcn/UI",
+    "Base UI",
+    "Radix UI"
+  ]
+}
