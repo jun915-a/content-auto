@@ -1,0 +1,16 @@
+# Agnost AI: Turn Agent Chats into Actionable User Insights with Zero Code
+
+*Insert header image here*
+
+Agnost AI, launched in YC S26, helps teams extract and analyze user feedback from agent conversations without writing a single line of code. Discover how this product analytics tool is transforming customer insights.
+
+{
+  "## 🔑 The Core of This Topic": "Agnost AI is a product analytics platform designed to extract meaningful user feedback from agent conversations—whether chat or voice. Built by Shubham and Parth, it enables teams to understand customer needs without manual analysis or coding, streamlining decision-making with real-time insights.",
+  "## ⚡ 5-Second Key Points": "- **Zero-code setup**: Integrate in minutes, no engineering required\n- **Real-time feedback**: Analyze conversations as they happen\n- **Actionable insights**: Identify pain points, trends, and opportunities instantly\n- **Multi-channel support**: Works with chat, voice, and other agent interactions\n- **Y Combinator backing**: Part of the prestigious YC S26 batch",
+  "## 📈 Detailed Breakdown": "**Element 1**\nAgnost AI’s core strength lies in its ability to **automatically parse and categorize user feedback** from agent conversations. Instead of sifting through raw transcripts, teams get structured, searchable data that highlights key themes—like complaints, feature requests, or confusion points—without any manual effort. This is especially valuable for fast-growing teams scaling their customer support or AI agents, where time and precision matter.",
+  "**Element 2**\nThe platform goes beyond simple keyword tagging by **applying AI-driven sentiment analysis and trend detection**. For example, if multiple users mention difficulty navigating a checkout process, Agnost flags this as a recurring issue, allowing product teams to prioritize fixes. Additionally, its **no-code dashboard** lets non-technical users create custom reports, making it accessible to product managers, marketers, and support leads alike. > 💡 Insight: **The future of product analytics isn’t just about data—it’s about turning noise into signals instantly.** Teams that leverage real-time, structured feedback gain a competitive edge by addressing issues before they escalate or miss opportunities entirely.\n\n## 🎯 Real-World Impact\n- **Customer support teams** reduce response times by identifying common issues proactively\n- **Product managers** validate feature ideas faster by analyzing unfiltered user feedback\n- **AI teams** refine their models by understanding where users struggle or abandon conversations\n- **Startups** gain a data-driven edge without hiring expensive analytics teams\n\n## ✅ Conclusion\nAgnost AI isn’t just another analytics tool—it’s a **force multiplier for teams building with AI**. By automating the tedious work of feedback extraction, it lets businesses focus on what matters: building products users love. For teams drowning in chat logs or struggling to scale insights, Agnost offers a clear path forward—simpler, faster, and more effective than ever before. Whether you’re a YC founder or a product leader, this is one tool to watch closely in 2025.\n\n- tags": [
+    "product analytics",
+    "AI feedback tools",
+    "customer insights"
+  ]
+}
