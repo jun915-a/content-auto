@@ -1,0 +1,18 @@
+# How a Custom CPU Ran Doom—and Went Viral
+
+*Insert header image here*
+
+A homebrew CPU capable of running Doom became an overnight sensation, proving that passion and curiosity can still break the internet. Here’s how it happened.
+
+{
+  "## 🔑 The Core of This Topic": "A custom-built CPU, designed from scratch by an enthusiast, achieved the impossible: running id Software’s *Doom*. The project didn’t just go viral—it reignited debates about retro computing, DIY hardware, and the enduring power of classic games.",
+  "## ⚡ 5-Second Key Points": "- **Custom CPU runs Doom**: A homebrew processor executes the iconic 1993 game, defying odds.\n- **Viral sensation**: The project sparked global headlines and social media frenzy.\n- **DIY hardware revival**: Proves that passion projects can still capture the internet’s imagination.\n- **Educational goldmine**: Inspires a new wave of hardware tinkerers and retro gaming enthusiasts.\n- **Nostalgia meets innovation**: Bridges the gap between 90s gaming culture and modern maker movements.",
+  "## 📈 Detailed Breakdown": "**Element 1**\nThe creator, a self-taught engineer, spent over a year designing the CPU from transistors up. Using only off-the-shelf components and open-source tools, they built a minimalist architecture capable of executing Doom’s relentless frame rates. The real magic? Optimizing memory access to handle the game’s demanding textures and physics—something even early PCs struggled with. This wasn’t just a stunt; it was a masterclass in constraint-driven design, proving that limitations breed creativity.\n\n**Element 2**\nThe project’s viral moment arrived when a short demo video hit Reddit’s r/hardware. The juxtaposition of a crude, wire-wrapped CPU powering a 3D dungeon crawler triggered a wave of nostalgia and awe. Tech outlets like Hackaday and Ars Technica picked it up, framing it as a David-vs-Goliath story in the age of black-boxed silicon. Comment sections exploded with debates about the future of custom hardware, while memes of \"playing Doom on a toaster\" flooded Twitter. The creator’s GitHub repo saw a 20,000% traffic spike overnight.\n\n> 💡 Insight: The most viral tech projects aren’t about raw power—they’re about storytelling. A relatable challenge (running Doom) + a scrappy underdog (DIY CPU) + a dash of nostalgia (90s gaming) equals internet gold.",
+  "## 🎯 Real-World Impact": "- **Inspired a generation**: Sparked countless \"Can I run Doom on X?\" projects, from Raspberry Pis to FPGAs.\n- **Revived retro hardware**: Proved that classic games still have cultural cachet, bridging generations of gamers.\n- **Boosted DIY confidence**: Encouraged makers to tackle complex projects, knowing even \"impossible\" feats could go viral.\n- **Highlighted education gaps**: Sparked discussions about teaching hardware design in schools, where software dominates.\n- **Commercial ripple effects**: Some companies reached out to the creator for collaboration, seeing potential in low-cost, open-source computing.",
+  "## ✨ Conclusion": "This story isn’t just about running Doom—it’s about the unbreakable spirit of tinkering. In an era where technology feels increasingly out of reach, projects like this remind us that the next big breakthrough might start with a single wire and a dream. Whether you’re a programmer, a gamer, or just someone who’s ever wondered \"How does this work?\", the lesson is clear: curiosity is the ultimate CPU.",
+  "tags": [
+    "doom",
+    "custom CPU",
+    "DIY hardware"
+  ]
+}
