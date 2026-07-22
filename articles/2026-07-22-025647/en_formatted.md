@@ -1,0 +1,16 @@
+# Turn Async Work into Tools: A New MCP Server Revolutionizes Repetition
+
+*Insert header image here*
+
+A decade-long rule becomes a game-changer as a new MCP server automates answers, turning repeated questions into self-service tools for async teams.
+
+{
+  "## 🔑 The Core of This Topic": "A developer’s decade-old rule—answering the same question three times means creating a tool—spawns an MCP server that transforms async work practices into reusable, automated solutions. This isn’t just automation; it’s a paradigm shift for async teams sick of reinventing the wheel.",
+  "## ⚡ 5-Second Key Points": "- **Rule Enforcement**: Automate answers after the third repetition to reduce cognitive load\n- **MCP Server Magic**: Turns async workflows into tools anyone can use without reinventing the wheel\n- **Async-First Design**: Built for distributed teams that prioritize autonomy and minimal meetings\n- **Scalable Solutions**: From docs to scripts, every repetitive task becomes a tool\n- **Community-Driven**: Open-source project welcoming contributions and real-world use cases",
+  "## 📈 Detailed Breakdown": "**Element 1**\nThis MCP server isn’t just another automation tool—it’s a philosophy wrapped in code. By encoding repetitive answers into tools, teams can stop wasting time on the same questions and start focusing on high-impact work. The server acts as a bridge between human curiosity and machine efficiency, turning FAQs into APIs anyone can query. Think of it as a digital assistant that learns from your team’s patterns and adapts over time.\n\n**Element 2**\nThe magic lies in its integration with async workflows. For distributed teams, context is king, and repetition drains morale. This server ensures that every piece of tribal knowledge—whether it’s a debugging step or a deployment checklist—becomes a self-service tool. No more Slack pings or Zoom calls; just a URL or command that delivers the answer instantly. It’s not about replacing humans; it’s about giving them more time to innovate.",
+  "> 💡 Insight: The third time someone asks the same question, the MCP server doesn’t just answer—it builds a tool to prevent the question from ever being asked again. This is the power of institutionalizing knowledge efficiently.\n\n## 🎯 Real-World Impact\n- **Engineering Teams**: Reduce context-switching by 40% by automating repetitive Q&A\n- **Open-Source Projects**: Onboard contributors faster with self-service documentation tools\n- **Startups**: Scale customer support without hiring more staff by turning FAQs into tools\n- **Remote Work**: Empower async teams to move faster without sacrificing clarity\n- **Community Growth**: Encourage knowledge sharing by making it effortless to contribute tools\n\n## ✨ Conclusion\nThe rule ‘answer a question three times, then automate it’ has always been about saving time. But with this MCP server, it’s becoming about more than time—it’s about transforming how teams work, collaborate, and grow. By turning async practices into tools, we’re not just answering questions; we’re building the foundation for the next generation of efficient, distributed teams. The future of work isn’t just async; it’s self-service.\n\n- tags": [
+    "async work",
+    "MCP server",
+    "automation"
+  ]
+}
