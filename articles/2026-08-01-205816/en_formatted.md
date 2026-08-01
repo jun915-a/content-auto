@@ -1,0 +1,20 @@
+# How Google Killed RSS Feeds (And Why It Matters)
+
+*Insert header image here*
+
+Google's shift away from RSS in its core products silently buried a once-vital tool for information discovery. Here’s how the tech giant erased a technology that defined an era of the web.
+
+{
+  "## 🔑 The Core of This Topic": "Google systematically dismantled RSS adoption by removing its support from key products, making the technology obsolete for mainstream users. The decision reflected broader trends in how digital platforms prioritize convenience over open standards.",
+  "## ⚡ 5-Second Key Points": "- **Google Reader’s shutdown (2013)**: The death of the most popular RSS reader erased a primary use case.",
+  "- **Disappearance from Chrome**: RSS feed icons vanished, normalizing feed non-usage for casual users.  \n- **Algorithm over curation**: Google’s shift to personalized feeds reduced reliance on RSS for content discovery.  \n- **Social media takeover**: Platforms like Facebook and Twitter absorbed the role of content aggregation.  \n- **No clear replacement**: Users lost a simple, open way to follow updates from their favorite sources.": "",
+  "## 📈 Detailed Breakdown": "**Element 1**\n\nGoogle’s decision to phase out RSS started with the shutdown of Google Reader in 2013, a move that sent shockwaves through the tech community. Reader was the gold standard for RSS aggregation, offering a clean, functional interface that millions relied on. Its demise wasn’t just a product failure—it was a signal that RSS had lost Google’s backing. Without a major corporate ally, RSS became a niche tool, shunned by casual users who prioritized convenience over control. The vacuum left by Reader was never truly filled, as alternatives struggled to gain traction in a web increasingly dominated by algorithm-driven feeds.\n\n> 💡 Insight: The death of Google Reader marked the beginning of the end for RSS as a mainstream technology, not because of technical flaws, but because of corporate neglect and shifting user habits.\n\n\n**Element 2**\n\nBeyond Reader, Google quietly erased RSS from its ecosystem. The disappearance of RSS feed icons from Chrome’s address bar in 2018 was a subtle but symbolic blow. Most users never noticed, but for those who did, it was a clear indicator that RSS was no longer a priority. Meanwhile, Google’s algorithmic curation in products like Google News and Discover replaced the need for manual RSS subscriptions. The message was clear: if you want content, Google will deliver it to you—whether you ask for it or not. This shift normalized the idea that users should passively consume rather than actively curate their information diet.",
+  "## 🎯 Real-World Impact": "- **Fragmented information ecosystems**: Users now rely on siloed platforms, making it harder to track updates across independent sources.",
+  "- **Loss of control**: RSS once gave users agency to filter noise and focus on what mattered, a power now surrendered to opaque algorithms.  \n- **Decline of independent media**: Without RSS as a discovery tool, small publishers and blogs struggle to reach audiences outside social media’s shadow.": "",
+  "## ✨ Conclusion": "RSS was a victim of its own success—too simple, too open, and too decentralized for an era obsessed with walled gardens and data extraction. Google didn’t just ignore RSS; it actively dismantled the infrastructure that made it viable. Today, the web is more connected yet less transparent, and we’re all poorer for it. The lesson? Open standards matter, but only as long as someone fights for them.",
+  "tags": [
+    "RSS feeds",
+    "Google Reader",
+    "digital media trends"
+  ]
+}
