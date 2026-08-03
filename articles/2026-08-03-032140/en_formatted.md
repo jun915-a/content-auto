@@ -1,0 +1,18 @@
+# Turn Your Framework 12 Laptop into a Creaking Door
+
+*Insert header image here*
+
+Discover how a hidden hinge sensor in your Framework 12 can transform its lid into a spooky, creaky door—with open-source code to make it happen today.
+
+{
+  "## 🔑 The Core of This Topic": "Your Framework 12 laptop isn’t just a sleek machine—it’s a creaky door in disguise. Thanks to a hidden hinge angle sensor, one developer turned mundane screen movements into eerie door-like sounds, all with open-source code.",
+  "## ⚡ 5-Second Key Points": "- **Framework 12’s hinge sensor** is precise enough to track lid angle in real time.\n- **creakwork12** is a lightweight tool that converts hinge motion into creaking sounds.\n- **No extra hardware** needed—just your Framework 12 and a Python script.\n- **Customizable** sound profiles for different door-like effects.\n- **Open-source** and community-driven for future tweaks.",
+  "## 📈 Detailed Breakdown": "**Element 1**\nThe Framework 12’s hinge sensor, part of the iio (Industrial I/O) subsystem, detects lid angles with surprising accuracy. Unlike traditional laptops, the Framework 12 exposes this data via the `LidAngleSensor` interface, making it ripe for creative hacking. The sensor’s raw values are mapped to sound frequencies, creating a dynamic creaking effect that mimics a real door’s movement. The project leverages this sensor to generate audio in real time, syncing perfectly with the lid’s physical motion.\n\n> 💡 Insight: The Framework 12’s hinge sensor is a hidden gem—most users never interact with it, but it opens doors (literally) for unique hardware hacks.\n\n\n**Element 2**\ncreakwork12 is a Python-based solution that listens to the `LidAngleSensor` and translates its readings into creaking sounds. The tool uses a simple yet effective algorithm to map angle changes to audio samples, ensuring smooth transitions between sounds. Users can tweak parameters like creak intensity, pitch range, and damping to customize the experience. The project is lightweight, requiring minimal dependencies, and runs efficiently even on the Framework 12’s modest hardware. It’s a perfect example of how open-source software can repurpose existing hardware in unexpected ways.",
+  "## 🎯 Real-World Impact": "- **Entertainment**: Turn your laptop into a prop for horror games or immersive storytelling.\n- **Accessibility**: Creative sound feedback for visually impaired users to “hear” laptop interactions.\n- **Education**: A fun way to learn about hardware sensors, Linux subsystems, and real-time audio processing.\n- **Community Building**: Sparks ideas for other Framework 12 hacks, fostering a culture of DIY experimentation.\n- **Productivity**: Unconventional sound cues for workflow transitions (e.g., creaking when closing a tab).",
+  "## ✨ Conclusion": "Your Framework 12 isn’t just a workhorse—it’s a tool for creativity. With creakwork12, a hidden sensor becomes a doorway to whimsy, blending hardware and software in a way that’s both practical and playful. Whether you’re a tinkerer, a storyteller, or just someone who loves unexpected tech, this project proves that the best innovations often come from looking at what’s already under our noses.",
+  "tags": [
+    "laptop hacks",
+    "open-source",
+    "hardware innovation"
+  ]
+}
