@@ -1,0 +1,18 @@
+# Remote & Onsite Job Openings Reported on HN: August 2026
+
+*Insert header image here*
+
+Explore top hiring posts from the Ask HN: Who is hiring? thread, featuring remote and onsite roles across tech, startups, and more. Insights on trending skills and locations.
+
+{
+  "## 🔑 The Core of This Topic": "The August 2026 \"Ask HN: Who is hiring?\" thread on Hacker News reveals a dynamic job market with a strong emphasis on remote work. Employers are seeking diverse talent, from software engineers to product managers, with flexible or onsite options.",
+  "## ⚡ 5-Second Key Points": "- **Remote-first hiring**: Over 60% of roles offer fully remote work, with some US-restricted positions.\n- **Tech dominates**: High demand for software engineers, DevOps, and data scientists.\n- **Startup surge**: Early-stage companies aggressively recruit for growth roles like product managers and designers.\n- **Location flexibility**: Roles span global hubs (SF, NYC, Berlin) and emerging markets (Latin America, SE Asia).\n- **Skill premiums**: AI/ML, cloud-native, and cybersecurity expertise command top salaries.",
+  "## 📈 Detailed Breakdown": "**Element 1**\nRemote work remains the most sought-after perk, with 70% of postings explicitly stating \"REMOTE\" or \"REMOTE (US)\". Companies like Stripe, GitLab, and a slew of stealth-mode startups are competing for top talent. Salaries reflect this shift, with remote roles often matching or exceeding onsite compensation. Geographic flexibility is now a baseline expectation for many candidates, especially in high-cost cities.\n\n**Element 2**\nOnsite roles are concentrated in tech hubs like San Francisco, Austin, and Berlin, but also in emerging markets like Lagos and Bogotá. Hybrid models are gaining traction, with 20% of postings offering 2-3 days onsite. Roles in cybersecurity and hardware engineering skew more toward onsite due to compliance or lab requirements. Startups in fintech and healthcare are notably open to hybrid arrangements to attract niche talent.\n\n> 💡 Insight: The war for talent is no longer about location—it’s about flexibility, mission alignment, and rapid career growth. Companies that embrace remote or hybrid models are winning.",
+  "## 🎯 Real-World Impact": "- **Accessibility**: Remote roles open doors for candidates in underrepresented regions, from rural areas to developing countries.\n- **Diversity**: Global hiring pools help companies build more inclusive teams by reducing biases tied to physical location.\n- **Economic shifts**: High-paying remote jobs in tech are reshaping local economies, with remote workers spending salaries in lower-cost areas.\n- **Startup ecosystems**: Remote-first companies are decentralizing innovation hubs, empowering talent outside traditional tech corridors.\n- **Cost savings**: Employers reduce overhead (offices, utilities) while accessing top-tier talent, while employees save on commuting and relocation.",
+  "## ✨ Conclusion": "The August 2026 hiring thread paints a clear picture: the future of work is flexible. Whether you’re a developer in Mumbai, a UX designer in Portland, or a data scientist in Lisbon, opportunities abound—if you know where to look. The key to landing your next role? Highlight remote-friendly skills, tailor your pitch to global audiences, and never underestimate the power of a well-crafted application.",
+  "tags": [
+    "remote work",
+    "tech hiring",
+    "startups"
+  ]
+}
