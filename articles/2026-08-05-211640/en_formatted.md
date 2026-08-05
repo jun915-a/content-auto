@@ -1,0 +1,22 @@
+# Western Sahara: Africa's Last Colonial Dispute
+
+*Insert header image here*
+
+A decades-long territorial conflict in Western Sahara pits Morocco against the Polisario Front, leaving a disputed land rich in resources in limbo. What's behind this forgotten war?
+
+{
+  "## 🔑 The Core of This Topic": "Western Sahara is a sparsely populated desert territory in northwest Africa, claimed by both Morocco and the self-proclaimed Sahrawi Arab Democratic Republic (SADR). Once a Spanish colony, its post-colonial fate remains unresolved, marked by war, ceasefires, and geopolitical tensions over its phosphate reserves and strategic coastal position.",
+  "## ⚡ 5-Second Key Points": "- **Claimed by two sides**: Morocco controls 80% of the territory, while the Polisario Front seeks independence for the Sahrawi people.\n- **Frozen conflict**: A 1991 ceasefire brokered by the UN is repeatedly violated, with no referendum on self-determination held.\n- **Resource-rich**: Phosphate mines and offshore fishing grounds fuel economic interests and global involvement.\n- **Humanitarian crisis**: Thousands of Sahrawi refugees live in camps in Algeria, dependent on aid for survival.\n- **UN’s role**: The Security Council’s MINURSO mission has failed to resolve the stalemate for over 30 years.",
+  "## 📈 Detailed Breakdown": {
+    "**Element 1**: The Origins of the Conflict": "Western Sahara was a Spanish colony until 1975, when Spain withdrew under pressure from Morocco and Mauritania. Morocco claimed the territory based on historical ties, while the Polisario Front, backed by Algeria, demanded independence. A guerrilla war erupted, leading to Mauritania’s withdrawal in 1979 and Morocco’s subsequent annexation of most of the territory. The International Court of Justice ruled in 1975 that Morocco did not have legal sovereignty over the region, but this did not halt its military campaign.",
+    "**Element 2**: The Role of Resources and Geopolitics": "The conflict is fueled by Western Sahara’s vast phosphate deposits, one of the world’s largest, and its rich fishing grounds. Morocco’s control over these resources has drawn support from global powers like the U.S. and France, while the Polisario Front relies on Algeria’s backing. The UN has repeatedly called for a referendum on self-determination, but Morocco rejects it, offering instead limited autonomy under its sovereignty. Meanwhile, foreign companies continue to exploit the territory’s resources, often in violation of international law.",
+    "> 💡 Insight: The Western Sahara conflict is often called Africa’s ‘last colony,’ but its roots lie in Cold War-era proxy wars and resource greed. The deadlock persists because neither side can afford to compromise without losing face or leverage, while the Sahrawi people remain trapped in a cycle of displacement and unfulfilled promises.": "",
+    "## 🎯 Real-World Impact": "- **Humanitarian crisis**: Over 170,000 Sahrawi refugees live in camps near Tindouf, Algeria, dependent on UN aid. Many have spent generations in exile, with little hope of return.\n- **Regional instability**: The conflict strains Morocco-Algeria relations, contributing to broader North African tensions and complicating efforts to integrate the Maghreb region.\n- **Global implications**: The dispute has drawn in major powers, with Morocco’s autonomy plan receiving U.S. recognition in 2020, while the EU faces legal challenges over trade deals with Morocco that include Western Sahara. Companies like Kosmos Energy and BP operate in the disputed waters, drawing criticism from human rights groups.",
+    "## ✨ Conclusion": "Western Sahara remains a forgotten conflict, its people caught between geopolitical ambitions and economic exploitation. The stalemate persists because no side can claim victory, and the international community lacks the will to enforce a lasting solution. For the Sahrawi, the dream of self-determination is fading, while the world turns away from one of Africa’s most protracted disputes.",
+    "tags": [
+      "Western Sahara conflict",
+      "Sahrawi people",
+      "decolonization"
+    ]
+  }
+}
