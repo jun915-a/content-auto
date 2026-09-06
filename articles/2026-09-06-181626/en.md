@@ -1,0 +1,5 @@
+# NetBSD 9.5 Released: A Stable Yet Phasing-Out Era Begins
+
+NetBSD 9.5 is now live, offering refined stability and security for users, but marks the end-of-life for NetBSD-9 branch. Discover its features, implications, and what’s next in this critical update.
+
+NetBSD 9.5 marks the final milestone for the NetBSD-9 branch, signaling both stability and the impending end-of-life (EOL) for this long-standing release line. The open-source Unix-like operating system continues to deliver robust performance, cross-platform compatibility, and a commitment to portability, but users must prepare for the transition ahead as NetBSD-9 will no longer receive updates or security patches after this release. This update is pivotal for developers, system administrators, and enthusiasts who rely on NetBSD’s reliability and flexibility in diverse environments, from embedded systems to high-performance computing clusters. The release underscores NetBSD’s dedication to innovation while acknowledging the lifecycle of its software branches, prompting users to evaluate their upgrade paths to newer, supported versions like NetBSD-10 or beyond.
