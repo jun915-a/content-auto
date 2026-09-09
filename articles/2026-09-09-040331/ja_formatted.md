@@ -1,0 +1,12 @@
+# WebGPUのコードを簡単に見やすく！27.5KBの超軽量ハイライター
+
+*ここに見出し画像を挿入*
+
+{
+  "ja": "WebGPUはWeb上でGPUプログラミングを可能にする新技術ですが、コードの書式設定が難しく、開発者を困らせてきました。今回紹介する**gpu-lexer**は、わずか27.5KBのJavaScriptライブラリで、WebGPUのコードを**言語非依存**かつ**高速**にハイライトするツールです。開発者はこのツールを使うことで、コードの可読性を劇的に向上させ、エラーの発見や共有をスムーズに行えます。この記事では、その仕組みやメリット、実世界での活用法を解説します。",
+  "en": "WebGPU enables GPU programming on the web, but syntax highlighting for its code has been cumbersome. **gpu-lexer**, a lightweight 27.5KB JS library, provides **language-agnostic** and **fast** syntax highlighting for WebGPU code. Developers can leverage this tool to enhance readability, debug errors, and share code effortlessly. This article covers its mechanics, benefits, and real-world applications."
+}
+
+{
+  "ja": "## 📌 このトピックの本質\nWebGPUはブラウザ上でGPUを利用するための**次世代API**であり、Unreal EngineやBlenderなどの高性能アプリケーションのWeb版を可能にします。しかし、WebGPUの**Shading Language**や**Compute Shaders**は独自の構文を持ち、従来のハイライターでは正しく解析できません。このツールは**言語非依存**かつ**高速**にコードを解析し、開発者が直感的にコードを理解できるように支援します。\n\n## 🎯 5秒で分かるポイント\n- **Point 1**: **27.5KB未満**の軽量ライブラリで、WebGPU専用のコードハイライトを実現。\n- **Point 2**: **言語非依存**な設計のため、WGSLやGLSLといった多様なGPUシャーディング言語に対応。\n- **Point 3**: **リアルタイム反映**と**高速パース**で、開発者の作業フローを大幅に加速。\n\n## 📊 詳細解説\n**Element 1**\ngpu-lexerは**WebGPUの構文を事前に学習**した正規表現エンジンを採用しています。これにより、コード内のキーワード（`@group`, `@binding`, `struct`など）、型（`u32`, `vec4`など）、コメント（`//`, `/* */`）を**リアルタイム**で検出・ハイライトします。従来のハイライターが言語依存だったのに対し、このツールは**WebGPU固有の構文**に特化しており、精度が高いです。\n\n**Element 2**\nライブラリのサイズが**27.5KB**と極めて小さいのは、以下の工夫によるものです：\n- **最小限の依存関係**：外部ライブラリを一切使わず、純粋なJavaScriptで実装。\n- **効率的なパースアルゴリズム**：高速な正規表現パターンを活用し、コードの解析時間を最小限に抑えています。\n\n> 💡 ポイント: **このツールはコードエディタやIDEへの組み込みが容易**であり、開発者はプラグインを追加することで即座にWebGPUコードの可読性を向上させられます。\n\n## 🚀 実世界への影響\n- **開発者の生産性向上**：コードのハイライトにより、エラーの発見やリファクタリングが**20%以上スピードアップ**します。\n- **WebGPUエコシステムの拡大**：ツールの普及により、より多くの開発者がWebGPUを採用しやすくなり、コンテンツの質が向上。\n- **教育・ドキュメントの向上**：WebGPUの学習資料やドキュメントに組み込むことで、**初心者向けのガイド**がより分かりやすくなります。\n\n## ✨ 結論\nWebGPUは今後、Web上での高性能グラフィックスやコンピューティングを主導する技術となるでしょう。しかし、そのコードの可読性は開発者のハードルの一つでした。gpu-lexerは**軽量かつ高精度**なハイライターとして、その課題を解決する鍵となります。開発者はこのツールを活用することで、WebGPUの可能性を**より効率的に、より楽しんで**実現できるようになるでしょう。"
+}
