@@ -1,0 +1,12 @@
+# Apple Intelligenceの機能をMacでオフにする方法
+
+*ここに見出し画像を挿入*
+
+{
+  "ja": "Apple Intelligenceは便利だが、プライバシーやパフォーマンスへの影響を懸念する場合もあります。この記事では、MacでApple Intelligenceを完全に無効化し、アクセス権限を制限する具体的な手順を解説。セキュリティ意識の高いユーザーや企業環境向けの実践的ガイドです。プライバシー保護やシステム最適化に役立ちます。",
+  "en": "Apple Intelligence offers powerful features but may raise privacy and performance concerns. This article explains how to disable Apple Intelligence and restrict access on Mac. Practical steps for privacy-conscious users and enterprise environments."
+}
+
+{
+  "ja": "## 📌 このトピックの本質\nApple IntelligenceはiOS 18・macOS Sequoiaで導入されたAI機能で、スマート検索、文書編集、画像生成などをサポート。しかし、背景で動くAI処理はバッテリー消費やプライバシーリスクを伴う場合があります。この記事では、Appleが公式に公開した手順をもとに、MacでApple Intelligenceの機能を完全にオフにする方法を解説します。\n\n## 🎯 5秒で分かるポイント\n- **Point 1**: **システム環境設定**から「Apple Intelligence」のスイッチを切るだけで機能を一時停止\n- **Point 2**: **アクセス権限を制限**することで、特定のアプリケーションがApple Intelligenceを使用できなくなる\n- **Point 3**: **セキュリティ設定**で「AIモデルの使用」をオフにすることで、全てのApple Intelligence機能を完全にブロック\n\n## 📊 詳細解説\n**Element 1**\nApple Intelligenceをオフにする最も簡単な方法は、**システム環境設定**からです。Macのメニューバーから「Appleロゴ」をクリックし、**「システム環境設定」**を選択します。そこで「**Apple Intelligence**」という項目を探し、右側のスイッチを**オフ**に切り替えます。この操作は即座に効果が現れ、Apple Intelligenceに関連する機能が全て停止します。ただし、この設定はユーザーごとに個別に管理されるため、複数ユーザー環境では各ユーザーが別々に設定する必要があります。\n\n**Element 2**\nより厳格な制御を求める場合は、**アクセス権限の制限**が必要です。例えば、特定のアプリケーション（例えばSafariやNotes）がApple Intelligenceを使用できないように設定することができます。システム環境設定の「**プライバシーとセキュリティ**」タブに移動し、**「Apple Intelligence」**を選択します。そこで、**「アプリケーションの許可**」をクリックし、使用を許可したいアプリケーションを選択解除します。これにより、選択したアプリケーションはApple Intelligenceの機能を利用できなくなります。\n\n> 💡 ポイント: Apple Intelligenceの機能を完全にオフにするには、**「システム環境設定」→「Apple Intelligence」→「AIモデルの使用をオフにする**」という手順が最も効果的です。この設定は、Apple Intelligenceに関連する全ての機能（スマート検索、AI生成画像、文書編集など）を一括で停止します。\n\n## 🚀 実世界への影響\n- **プライバシーの向上**: 背景で動くAI処理を停止することで、個人データの取り扱いをより透明化し、プライバシー侵害のリスクを低減\n- **システムパフォーマンスの向上**: Apple IntelligenceはCPUやGPUを消費するため、オフにすることでバッテリー寿命が延び、Macの動作がスムーズになる\n- **セキュリティの強化**: AIモデルの使用を制限することで、潜在的なセキュリティリスク（例：AIによる悪意のあるデータ解析）を軽減\n\n## ✨ 結論\nApple Intelligenceは便利な機能を提供しますが、プライバシーやパフォーマンスに関する懸念を持つユーザーにとっては、オフにすることが最適な選択となる場合があります。この記事で紹介した手順を参考に、自分のニーズに合わせてApple Intelligenceの使用を制御してください。特に企業環境では、セキュリティポリシーに沿った設定が求められますので、組織全体のガイドラインを確認しながら操作を行うことをお勧めします。"
+}
