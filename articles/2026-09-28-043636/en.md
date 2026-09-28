@@ -1,0 +1,5 @@
+# Revolutionizing Robotics: The Cartesian Hand’s All-Linear Fingers
+
+Meet the **Cartesian Hand**—a groundbreaking robotic design that redefines in-hand manipulation with **all-linear fingers**, enabling unmatched precision and adaptability. Built by the General Robotics Lab, this innovation could reshape industries from surgery to logistics. Discover how it works and why it’s a game-changer.
+
+**The Cartesian Hand** is a revolutionary robotic hand designed by the **General Robotics Lab**, leveraging **all-linear fingers** to achieve **in-hand manipulation** with unprecedented flexibility and precision. Unlike traditional robotic grippers, this design eliminates rotary joints, replacing them with **purely linear actuators**, which drastically simplifies mechanics while enhancing control. The result? A hand capable of **complex object manipulation**, **fine adjustments**, and **adaptive grasping**—even for irregularly shaped items. This innovation could redefine robotics in fields like **medicine, manufacturing, and logistics** by enabling tasks that were previously impossible for conventional robotic systems.
