@@ -1,0 +1,6 @@
+# JanusでAI推論がGPUフル活用！Go言語による高速GGUFモデル実行が革命を起こすか？
+
+Go言語で書かれたJanusは、Vulkanを活用してAMD/Intel/NvidiaのGPU上でGGUF形式のAIモデルを高速実行。PythonやC++のバリアンスを克服し、開発者に新たな選択肢を提供。開発者が直面する課題と、このツールがもたらす可能性を解説します。
+
+## 📌 このトピックの本質
+Janusは、Go言語で書かれたライトウェイトなツールで、GGUF形式のAIモデル（主にLlamaやMistralなど）をVulkanを介してGPU上で高速に実行可能にする。従来のPythonベースのツール（例：llama.cpp）と比較し、Goの軽量性とVulkanのマルチプラットフォーム対応が最大の魅力。開発者は、単一のバイナリでAMD、Intel、NvidiaのGPUをフル活用できる可能性を手に入れることができる。
