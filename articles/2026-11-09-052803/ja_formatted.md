@@ -1,0 +1,12 @@
+# Outlook.comがDMARCなしのドメインからのメールを拒否！送信者信頼性が危うい
+
+*ここに見出し画像を挿入*
+
+{
+  "ja": "Outlook.comが2024年7月以降、DMARCレコードを設定していないドメインからのメールを拒否するようになりました。この変更は、スパム対策の強化と送信者信頼性の向上を目的としています。企業や個人ユーザーにとって、DMARCの導入は必須となりつつあり、メール配信の失敗リスクを回避するための対策が急務です。本記事では、DMARCの仕組みやOutlookの新規則、対処法について解説します。",
+  "en": "Outlook.com is rejecting emails from domains without DMARC records starting July 2024. This change aims to strengthen spam protection and enhance sender trust. For businesses and individuals, DMARC adoption is becoming mandatory, and proactive measures are needed to avoid email delivery failures. This article explains DMARC’s mechanics, Outlook’s new rules, and mitigation strategies."
+}
+
+{
+  "ja": "## 📌 このトピックの本質\nOutlook.comが、DMARC（Domain-based Message Authentication, Reporting & Conformance）レコードを設定していないドメインからのメールを拒否するようになったことは、メール送信者にとって大きな影響を与えます。この動きは、送信者側の認証強化を求めるMicrosoftの方針に基づき、スパムやフィッシングメールの減少を目指しています。特に、B2BやEメールマーケティングを利用する企業にとって、この変更は即時の対応が求められる重大な課題です。\n\n## 🎯 5秒で分かるポイント\n- **Point 1**: Outlook.comは2024年7月以降、DMARCレコードを持たないドメインからのメールを拒否するようになり、配信失敗が増加しています。\n- **Point 2**: DMARCはSPF（Sender Policy Framework）とDKIM（DomainKeys Identified Mail）の認証結果を強化し、メールの改竄や偽装を防ぐ仕組みです。\n- **Point 3**: 対応策としては、DMARCレコードの設定、SPF/DKIMの検証、およびメールサーバーのセキュリティ強化が必要です。\n\n## 📊 詳細解説\n**Element 1**\nOutlook.comがDMARCなしのドメインからのメール拒否を開始した背景には、メールセキュリティの強化が挙げられます。近年、スパムやフィッシング攻撃が増加し、送信者の信頼性を高めるために、MicrosoftはDMARCの導入を推奨してきました。この変更は、特に大規模なメール送信者や企業にとって、即時の対応が求められる重要なステップです。\n\n**Element 2**\nDMARCレコードの設定は、以下の3つのステップで行われます。\n- **SPFレコードの確認**: メールサーバーのIPアドレスが正しく登録されていることを確認します。\n- **DKIMレコードの設定**: ドメインにDKIMキーを追加し、メールの改竄を防ぎます。\n- **DMARCレコードの追加**: DNSにDMARCレコードを追加し、認証結果に基づいたポリシー（p=none、p=quarantine、p=reject）を設定します。\n\n> 💡 ポイント: DMARCレコードの設定は、メールサーバーの管理者が行う必要があります。また、レコードのテスト期間（p=none）を経て、最終的にはp=rejectに設定することを推奨します。\n\n## 🚀 実世界への影響\n- メール配信失敗の増加: DMARCレコードを持たないドメインからのメールは、Outlook.comで拒否されるため、配信率が低下します。\n- 送信者信頼性の低下: 信頼性の低い送信者として認識され、受信者のスパムフォルダへの振り分けが増えます。\n- 法的・業務上のリスク: フィッシングメールの増加により、ユーザーの信頼を失い、企業のブランドイメージに悪影響を及ぼす可能性があります。\n\n## ✨ 結論\nOutlook.comによるDMARC強制化は、メール送信者にとって避けられない課題です。早期の対応が必要であり、SPF、DKIM、DMARCの3つの認証手法を組み合わせたセキュリティ強化が求められます。特に、B2BやEメールマーケティングを利用する企業は、DMARCの導入を優先すべきです。対応を怠ると、メール配信の失敗や信頼性の低下に繋がり、業務や営業活動に支障を来す可能性があります。今すぐ対策を開始し、メールセキュリティを強化しましょう。"
+}
